@@ -27,16 +27,6 @@ class Loan implements Iterable<LoanPayment> {
 
    @Override
    public Iterator<LoanPayment> iterator() {
-      return new Iterator<LoanPayment>(){
-         @Override
-         public boolean hasNext() {
-            return false;
-         }
-
-         @Override
-         public LoanPayment next() {
-            return null;
-         }
-      };
+      return new LoanIterator(this);
    }
 }

@@ -1,6 +1,6 @@
 public abstract class LoanPayment {
-   public short paymentNumber;
-   public short paymentsRemaining;
+   public int paymentNumber;
+   public int paymentsRemaining;
 
    public double interestPaid;
    public double principalPaid;
