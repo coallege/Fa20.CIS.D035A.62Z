@@ -23,9 +23,10 @@ public class BabylonianMethod {
          try {
             in = sc.nextInt();
          } catch (NoSuchElementException e) {
-            sc.close();
             System.out.println("\nInterrupt. Exiting...");
-            System.exit(0);
+            return;
+         } finally {
+            sc.close();
          }
 
          System.out.println("builtin : " + Math.sqrt(in));
