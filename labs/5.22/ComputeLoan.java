@@ -3,7 +3,18 @@ import static java.lang.System.out;
 
 public class ComputeLoan {
    private static final Scanner sc = new Scanner(System.in);
+
+   /** clears the terminal */
+   static void clear() {
+      System.out.print("\033[3J\033[H\033[2J");
+   }
    public static void main(String[] dummy) {
+      clear();
+      out.println(""
+         + "ComputeLoan.java\n"
+         + "Author: Cole Gannon\n"
+      );
+
       double loanAmount;
       int yearsLoanTime;
       double yearlyInterestRate;
@@ -16,7 +27,7 @@ public class ComputeLoan {
          out.print("Annual Interest Rate: ");
          yearlyInterestRate = sc.nextDouble() / 100; // because it's a percent
       } catch (Exception e) {
-         System.out.println("\nInterrupt. Exiting...");
+         out.println("\nInterrupt. Exiting...");
          return;
       } finally {
          sc.close();
@@ -25,17 +36,19 @@ public class ComputeLoan {
       var monthsLoanTime = yearsLoanTime * 12;
       var monthlyInterestRate = yearlyInterestRate / 12;
 
-      // test it out
-      var thisloan = new Loan(loanAmount, monthlyInterestRate, monthsLoanTime);
-      out.print(""
-         + thisloan.monthlyPayment  + "\n"
-         + "------------------------ \n"
-         + thisloan.principal     + "\n"
-         + thisloan.totalInterestNeeded + "\n"
-      );
+      var loan = new Loan(loanAmount, monthlyInterestRate, monthsLoanTime);
 
-      for (var payment : thisloan) {
-         out.printf("%s %s %s\n", payment.paymentNumber(), payment.interestPaid(), payment.principalPaid());
+      out.printf("\nMonthly Payment: %.2f\n", loan.monthlyPayment);
+      out.printf("Total Payment: %.2f\n\n", loan.totalPaymentNeeded);
+
+      out.println("\nPayment#     Interest     Principal     Balance");
+      for (var payment : loan) {
+         out.printf("%-12d %-12.2f %-13.2f %-12.2f\n"
+            , payment.paymentNumber()
+            , payment.interestPaid()
+            , payment.principalPaid()
+            , payment.remainingPrincipal()
+         );
       }
    }
 }
