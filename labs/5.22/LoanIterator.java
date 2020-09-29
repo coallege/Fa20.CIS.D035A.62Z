@@ -1,9 +1,17 @@
 import java.util.Iterator;
 
 public class LoanIterator implements Iterator<LoanPayment> {
+   /**
+    * The suffering  controls if you really want the loan to be above
+    * zero for some reason at the end. Every other calculator is fine
+    * with it being at zero so I don't know why the textbook isn't.
+    */
+   private static final boolean suffering = true;
+
    private final Loan loan;
    private int remainingMonths;
    private double remainingPrincipal;
+
 
    protected LoanIterator(Loan loan) {
       this.loan = loan;
@@ -13,8 +21,15 @@ public class LoanIterator implements Iterator<LoanPayment> {
 
    @Override
    public boolean hasNext() {
-      // TODO: THIS IS PROBABLY OFF BY ONE BUT I DON't CARE AEHAHAHA
       return this.remainingMonths > 0;
+   }
+
+   private double calcPrincipalPaid(double interestPaid) {
+      double principalPaid = this.loan.monthlyPayment - interestPaid;
+      if (LoanIterator.suffering && remainingMonths == 0) {
+         principalPaid -= 0.01;
+      }
+      return principalPaid;
    }
 
    @Override
@@ -23,13 +38,16 @@ public class LoanIterator implements Iterator<LoanPayment> {
        // freeze all values here and close over them
       final int paymentNumber = this.loan.months - this.remainingMonths;
       final int remainingMonths = this.remainingMonths;
+
       final double interestPaid = this.loan.monthlyRate * this.remainingPrincipal;
-      final double principalPaid = this.loan.monthlyPayment - interestPaid;
+      final double principalPaid = calcPrincipalPaid(interestPaid);
+
       final double totalPaid = paymentNumber * this.loan.monthlyPayment;
-      final double remainingPrincipal = this.remainingPrincipal;
-      final double totalRemaining = this.loan.totalPaymentNeeded - totalPaid;
 
       this.remainingPrincipal -= principalPaid;
+
+      final double remainingPrincipal = this.remainingPrincipal;
+      final double totalRemaining = this.loan.totalPaymentNeeded - totalPaid;
 
       return new LoanPayment() {
          public int paymentNumber() { return paymentNumber; }
