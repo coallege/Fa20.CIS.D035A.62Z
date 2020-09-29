@@ -1,37 +1,50 @@
-import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
+import static java.lang.System.out;
 
 public class BabylonianMethod {
    public static double tolerance = 0.0001;
 
    /** clears the terminal */
-   static void clear() {
-      System.out.print("\033[3J\033[H\033[2J");
+   private static void clear() {
+      out.print("\033[3J\033[H\033[2J");
    }
+   /**
+    * This entire main function is just the terminal printing stuff
+    */
    public static void main(String[] dummy) {
       clear();
-      System.out.println(""
+      out.println(""
          + "BabylonianMethod.java\n"
          + "Author: Cole Gannon\n"
+         + "(ctrl+c to exit)\n"
          + "---------------------"
       );
       var sc = new Scanner(System.in);
+      loop:
       while (true) {
-         System.out.print(  "in      : ");
+         out.print("> ");
 
-         int in = 0;
+         String sin;
          try {
-            in = sc.nextInt();
+            sin = sc.nextLine();
          } catch (NoSuchElementException e) {
-            System.out.println("\nInterrupt. Exiting...");
+            out.println("BLANK\nInterrupt. Exiting...");
             return;
-         } finally {
-            sc.close();
          }
 
-         System.out.println("builtin : " + Math.sqrt(in));
-         System.out.println("sqrt    : " + sqrt(in));
-         System.out.printf( "diff    : %.16f\n\n", Math.abs(Math.sqrt(in) - sqrt(in)));
+         long in;
+         try {
+            in = Long.parseLong(sin);
+         } catch (NumberFormatException e) {
+            out.println("\033[1A\033[K> ILLEGAL INPUT");
+            continue loop;
+         }
+
+         out.printf("Math.sqrt  : %20f\n",  Math.sqrt(in));
+         out.printf("Babylonian : %20f\n", sqrt(in));
+         out.printf("Difference : %20f\n\n", Math.abs(Math.sqrt(in) - sqrt(in)));
       }
    }
 

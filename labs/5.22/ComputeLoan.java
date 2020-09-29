@@ -39,9 +39,9 @@ public class ComputeLoan {
       var loan = new Loan(loanAmount, monthlyInterestRate, monthsLoanTime);
 
       out.printf("\nMonthly Payment: %.2f\n", loan.monthlyPayment);
-      out.printf("Total Payment: %.2f\n\n", loan.totalPaymentNeeded);
+      out.printf("Total Payment: %.2f\n", loan.totalPaymentNeeded);
 
-      out.println("\nPayment#     Interest     Principal     Balance     #Remaining");
+      out.println("\nPayment#     Interest     Principal     Balance");
       for (var payment : loan) {
          out.printf("%-12d %-12.2f %-13.2f %-12.2f\n"
             , payment.paymentNumber()
