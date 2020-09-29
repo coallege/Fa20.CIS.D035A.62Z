@@ -6,8 +6,8 @@ class Loan implements Iterable<LoanPayment> {
    public final int months;
 
    public final double monthlyPayment;
-   public final double totalInterest;
-   public final double totalPayment;
+   public final double totalInterestNeeded;
+   public final double totalPaymentNeeded;
 
    public Loan(double principal, double monthlyRate, int months) {
       this.principal = principal;
@@ -21,8 +21,8 @@ class Loan implements Iterable<LoanPayment> {
          (q - 1)
       );
 
-      this.totalPayment = this.monthlyPayment * months;
-      this.totalInterest = this.totalPayment - principal;
+      this.totalPaymentNeeded = this.monthlyPayment * months;
+      this.totalInterestNeeded = this.totalPaymentNeeded - principal;
    }
 
    @Override

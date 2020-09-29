@@ -31,7 +31,11 @@ public class ComputeLoan {
          + thisloan.monthlyPayment  + "\n"
          + "------------------------ \n"
          + thisloan.principal     + "\n"
-         + thisloan.totalInterest + "\n"
+         + thisloan.totalInterestNeeded + "\n"
       );
+
+      for (var payment : thisloan) {
+         out.printf("%s %s %s\n", payment.paymentNumber(), payment.interestPaid(), payment.principalPaid());
+      }
    }
 }

@@ -1,10 +1,12 @@
-public abstract class LoanPayment {
-   public int paymentNumber;
-   public int paymentsRemaining;
+public interface LoanPayment {
+   int paymentNumber();
+   int paymentsRemaining();
 
-   public double interestPaid;
-   public double principalPaid;
+   double interestPaid();
 
-   public double totalPaid;
-   public double remainingBalance;
+   double principalPaid();
+   double remainingPrincipal();
+
+   double totalPaid();
+   double totalRemaining();
 }

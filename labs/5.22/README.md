@@ -11,5 +11,3 @@ Some UML diagrams for the suits?
 
 I would have added more `AbstractSingletonProxyFactoryBean`s but I simply didn't
 have the time.
-
-![](https://cdn.discordapp.com/emojis/750590855185825812.png?v=1)
