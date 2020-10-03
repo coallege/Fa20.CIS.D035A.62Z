@@ -1,0 +1,21 @@
+digraph PersonalInformation {
+   node [
+      fontname="Bitstream Vera Sans"
+      fontsize=8
+      shape=record
+   ]
+
+   edge [
+      fontname="Bitstream Vera Sans"
+      fontsize=8
+   ]
+
+   MailingAddress [
+      shape=record
+      label="{MailingAddress\<S = String \| null\>|S name\l|S companyName\l|S street\l|S district\l|S city\l|S county\l|S postalCode \l|S country \l}"
+   ]
+
+   MailingAddress_Builder [
+      label="{MailingAddress.Builder\<S = String \| null, N = Number \| null\>||Builder to(S name)\l|Builder toCompany(S companyName)\l|Builder onStreet(S street)\l|Builder inDistrict(S district)\l|Builder inCity(S city)\l|Builder inCounty(S county)\l|Builder withPostalCode(S postalCode)\lBuilder withPostalCode(N postalCode)\l|Builder inCountry(S country)\l|MailingAddress build()\l}"
+   ]
+}

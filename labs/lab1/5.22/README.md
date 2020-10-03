@@ -6,8 +6,8 @@ Requires at least JDK 10.
 javac *.java
 ```
 
-What is one supposed to put in here?
-Some UML diagrams for the suits?
+What else should I add?
+A UML diagram for the suits?
 
 ![](uml.png)
 
