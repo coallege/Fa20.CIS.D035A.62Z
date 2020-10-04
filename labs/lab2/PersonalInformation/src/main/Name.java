@@ -20,13 +20,16 @@ public class Name implements Fillable, Display {
    @Override
    public List<String> display() {
       var lines = new ArrayList<String>();
-      if (first != null && last != null) {
-         lines.add(this.last + ", " + this.first);
-      } else if (first == null && last == null) {
+      if (first == null && last == null) {
          return lines;
-      } else {
+      }
+
+      if (first == null || last == null) {
          // one of them is null
-         lines.add(first == null ? last : first);
+         lines.add("Name: " + first == null ? last : first);
+      } else {
+         // neither are null
+         lines.add("Name: " + this.last + ", " + this.first);
       }
       return lines;
    }

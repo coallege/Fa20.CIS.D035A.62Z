@@ -12,7 +12,7 @@ public class MailingAddress implements Fillable, Display {
 
    private static void push(final List<String> l, final Object what) {
       if (what != null && what != "") {
-         l.add(what.toString());
+         l.add("   " + what.toString());
       }
    }
 
@@ -24,6 +24,10 @@ public class MailingAddress implements Fillable, Display {
       push(lines, this.state);
       push(lines, this.postalCode);
       push(lines, this.country);
+      if (lines.size() > 0) {
+         lines.add(0, "Address {");
+         lines.add("}");
+      }
       return lines;
    };
 

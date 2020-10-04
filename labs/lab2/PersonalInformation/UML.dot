@@ -34,7 +34,15 @@ digraph PersonalInformation {
       label="{Test.Main||static void main(String args)\l}"
    ]
 
+   Display [
+      label="{Display||List<String> display()\l}"
+   ]
+
    Fillable -> MailingAddress
    Fillable -> Name
    Fillable -> Person
+
+   Display -> MailingAddress
+   Display -> Name
+   Display -> Person
 }
