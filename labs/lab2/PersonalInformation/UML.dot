@@ -10,18 +10,31 @@ digraph PersonalInformation {
       fontsize=8
    ]
 
+   Fillable [
+      label="{Fillable||void Fill(Prompt p)\l}"
+   ]
+
    MailingAddress [
-      shape=record
       label="{MailingAddress|Type S = String \| null||S name\l|S companyName\l|S street\l|S district\l|S city\l|S county\l|S postalCode \l|S country \l}"
    ]
 
-   MailingAddress_Builder [
-      label="{MailingAddress.Builder|Type S = String \| null|Type N = Number \| Null||Builder to(S name)\l|Builder toCompany(S companyName)\l|Builder onStreet(S street)\l|Builder inDistrict(S district)\l|Builder inCity(S city)\l|Builder inCounty(S county)\l|Builder withPostalCode(S postalCode)\lBuilder withPostalCode(N postalCode)\l|Builder inCountry(S country)\l|MailingAddress build()\l}"
-   ]
-
    Name [
-      label="{Name||Name(String first, String last)\l||String first\l|String last\l}"
+      label="{Name||Name(String first, String last)\l|String first\l|String last\l}"
    ]
 
-   MailingAddress -> MailingAddress_Builder
+   Person [
+      label="{Person||Name name\l|MailingAddress address\l|Integer age\l|Long number\l}"
+   ]
+
+   Prompt [
+      label="{Prompt||String question(String prompt)\l|Long questionLong(String prompt)\l|Integer questionInt(String prompt)\l|void close()\l}"
+   ]
+
+   Test_Main [
+      label="{Test.Main||static void main(String args)\l}"
+   ]
+
+   Fillable -> MailingAddress
+   Fillable -> Name
+   Fillable -> Person
 }

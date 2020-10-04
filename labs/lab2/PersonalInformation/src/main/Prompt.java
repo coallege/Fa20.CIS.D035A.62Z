@@ -1,6 +1,5 @@
 package main;
 
-import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Prompt {
@@ -11,23 +10,23 @@ public class Prompt {
       return this.sc.nextLine();
    }
 
-   public long questionLong(String prompt, long or) {
+   public Long questionLong(String prompt) {
       System.out.print(prompt + "\n> ");
       try {
          return Long.parseLong(this.sc.nextLine());
       } catch (Exception e) {
          System.out.println("\033[1A\033[K> ILLEGAL INPUT");
-         return or;
+         return null;
       }
    }
 
-   public int questionInt(String prompt, int or) {
+   public Integer questionInt(String prompt) {
       System.out.print(prompt + "\n> ");
       try {
          return Integer.parseInt(this.sc.nextLine());
       } catch (Exception e) {
          System.out.println("\033[1A\033[K> ILLEGAL INPUT");
-         return or;
+         return null;
       }
    }
 

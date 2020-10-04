@@ -9,4 +9,10 @@ run {
    standardInput = System.in
 }
 
+libsDirName = "../"
+
 mainClassName = "test.Main"
+
+jar {
+   manifest.attributes "Main-Class": "$mainClassName"
+}

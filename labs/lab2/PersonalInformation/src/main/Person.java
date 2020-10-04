@@ -1,12 +1,13 @@
 package main;
 
-import interfaces.Fillable;
+import interfaces.*;
+import java.util.*;
 
 public class Person implements Fillable {
    Name name;
    MailingAddress address;
-   int age;
-   long number;
+   Integer age;
+   Long number;
 
    @Override
    public void fill(Prompt p) {
@@ -15,7 +16,7 @@ public class Person implements Fillable {
       this.address = new MailingAddress();
       this.address.fill(p);
 
-      this.age = p.questionInt("What is your age?", 0);
-      this.number = p.questionLong("What is your phone number?", 0L);
+      this.age = p.questionInt("What is your age?");
+      this.number = p.questionLong("What is your phone number?");
    }
 }

@@ -1,34 +1,37 @@
 package main;
 
-import interfaces.Fillable;
-import static java.lang.System.out;
+import interfaces.*;
+import java.util.*;
 
-public class MailingAddress implements Fillable {
+public class MailingAddress implements Fillable, Display {
    public String street;
    public String city;
-   public String postalCode;
+   public String state;
+   public Integer postalCode;
    public String country;
 
-   private static void append(final StringBuilder sb, final String what) {
+   private static void push(final List<String> l, final Object what) {
       if (what != null && what != "") {
-         sb.append(what).append('\n');
+         l.add(what.toString());
       }
    }
 
    @Override
-   public String toString() {
-      var sb = new StringBuilder();
-      append(sb, this.street);
-      append(sb, this.city);
-      append(sb, this.postalCode);
-      append(sb, this.country);
-      return sb.toString();
+   public List<String> display() {
+      var lines = new ArrayList<String>();
+      push(lines, this.street);
+      push(lines, this.city);
+      push(lines, this.state);
+      push(lines, this.postalCode);
+      push(lines, this.country);
+      return lines;
    };
 
    @Override
    public void fill(Prompt p) {
       this.street = p.question("Number and street:");
       this.city = p.question("City:");
+      this.state = p.question("State: ");
       this.postalCode = p.questionInt("Postal Code:");
       this.country = p.question("Country:");
    }
