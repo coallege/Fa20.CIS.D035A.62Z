@@ -1,6 +1,6 @@
 package main;
 
-public abstract class MailingAddress {
+public class MailingAddress {
    public static Builder builder() { return new Builder(); }
 
    public static class Builder extends MailingAddress {

@@ -5,4 +5,8 @@ sourceSets {
    main.java.srcDir "src/"
 }
 
+run {
+   standardInput = System.in
+}
+
 mainClassName = "test.Main"
