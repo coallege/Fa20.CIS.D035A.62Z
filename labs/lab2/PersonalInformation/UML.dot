@@ -35,7 +35,7 @@ digraph PersonalInformation {
    ]
 
    Display [
-      label="{Display||List<String> display()\l}"
+      label="{Display||List\<String\> display()\l}"
    ]
 
    Fillable -> MailingAddress
