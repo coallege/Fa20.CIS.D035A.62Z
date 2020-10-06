@@ -1,12 +1,12 @@
 public interface LoanPayment {
-   int paymentNumber();
-   int paymentsRemaining();
+	int paymentNumber();
+	int paymentsRemaining();
 
-   double interestPaid();
+	double interestPaid();
 
-   double principalPaid();
-   double remainingPrincipal();
+	double principalPaid();
+	double remainingPrincipal();
 
-   double totalPaid();
-   double totalRemaining();
+	double totalPaid();
+	double totalRemaining();
 }
