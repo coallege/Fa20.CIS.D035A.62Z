@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Test {
 	public static void main(String args[]) {
 		// if the user ran it with javaw
-		if (true || System.console() == null) {
+		if (System.console() == null) {
 			GUI.run();
 			return;
 		}
@@ -16,19 +16,13 @@ public class Test {
 			+ "> "
 		);
 
-		short choice = 0;
-
 		var sc = new Scanner(System.in);
-		try {
-			var line = sc.nextLine();
-			choice = Short.parseShort(line);
-		} catch (Exception e) { }
+		var line = sc.nextLine();
 
-		sc.close();
-		if (choice == 1) {
+		if (line.equals("1")) {
 			GUI.run();
 		} else {
-			CUI.run();
+			CUI.run(sc);
 		}
 	}
 }

@@ -80,5 +80,7 @@ class GUI {
 		frame.setContentPane(tabs);
 
 		frame.setVisible(true);
+		frame.toFront();
+		frame.requestFocus();
 	}
 }
