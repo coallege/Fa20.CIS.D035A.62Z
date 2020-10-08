@@ -6,18 +6,31 @@ import interfaces.Display;
 import main.Person;
 import main.Prompt;
 
+import java.util.Scanner;
+
 public class Main {
+	/**
+	 * Because of the wonderful Display trait/interface
+	 * .display() gives us List<String> which can be printed to stdout
+	 */
 	private static void display(Display o) {
 		o.display().forEach(out::println);
 	}
 
-	// change this
-	private static final boolean testingMode = true;
 	public static void main(String args[]) {
-		if (testingMode) {
+		out.print(""
+			+ "Please choose an option\n"
+			+ "[0] Display pre-entered people\n"
+			+ "[1] Enter your own people\n"
+			+ "[default] Exit\n"
+			+ "> "
+		);
+
+		var input = new Scanner(System.in).nextLine();
+		if (input.equals("0")) {
 			display(TestPeople.payne);
 			display(TestPeople.vonKarma);
-		} else {
+		} else if (input.equals("1")) {
 			var person1 = new Person();
 			var person2 = new Person();
 			var person3 = new Person();

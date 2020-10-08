@@ -4,7 +4,7 @@ class Coin {
 		tails,
 	};
 
-	// Pure
+	/* Get a random face */
 	static Face flip() {
 		return Math.random() > 0.5 ? Face.heads : Face.tails;
 	}

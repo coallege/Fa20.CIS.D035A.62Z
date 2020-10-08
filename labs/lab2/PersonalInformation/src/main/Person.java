@@ -7,7 +7,18 @@ import java.util.function.Consumer;
 public class Person implements Fillable, Display {
 	public Name name;
 	public MailingAddress address;
+
+	// Why am I using boxed primitives (aka pointers to primitives)?
+	// Because I want there to be a null representation of what they are
 	public Integer age;
+	/**
+	 * Why long instead of String?
+	 * Before I changed this to a boxed long, it's faster than having a String
+	 * That wasn't the primary reason, though.
+	 * A String can contain many things that are not phone numbers.
+	 * I don't want people entering an email address for this field.
+	 * It's much easier to restrict phone numbers to being, well, numbers.
+	 */
 	public Long number;
 
 	@Override
@@ -26,9 +37,7 @@ public class Person implements Fillable, Display {
 		var lines = new ArrayList<String>();
 		lines.add("Person {");
 
-		Consumer<String> add = (line) -> {
-			lines.add("   " + line);
-		};
+		Consumer<String> add = (line) -> lines.add("   " + line);
 
 		var nameLines = this.name.display();
 		nameLines.forEach(add);

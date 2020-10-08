@@ -10,7 +10,12 @@ public class MailingAddress implements Fillable, Display {
 	public Integer postalCode;
 	public String country;
 
-	private static void push(final List<String> l, final Object what) {
+	/**
+	 * This is used to push properties to the list that is returned by display.
+	 * Since some properties can be null, we would rather not have a blank line
+	 * or a line that says "null" so skip over them.
+	 */
+	private static void push(List<String> l, Object what) {
 		if (what != null && what != "") {
 			l.add("   " + what.toString());
 		}

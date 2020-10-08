@@ -46,6 +46,7 @@ public class BabylonianMethod {
 			out.printf("Babylonian : %20f\n", sqrt(in));
 			out.printf("Difference : %20f\n\n", Math.abs(Math.sqrt(in) - sqrt(in)));
 		}
+		sc.close();
 	}
 
 	/**

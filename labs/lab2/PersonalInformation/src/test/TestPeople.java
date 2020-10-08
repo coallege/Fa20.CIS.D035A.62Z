@@ -2,6 +2,9 @@ package test;
 
 import main.*;
 
+/**
+ * Useful for debugging or for showing that your code does indeed work
+ */
 public class TestPeople {
 	static Person payne = new Person();
 	static Person vonKarma = new Person();
@@ -26,7 +29,7 @@ public class TestPeople {
 		vonKarma.name.last = "Von Karma";
 
 		vonKarma.address = new MailingAddress();
-		vonKarma.address.street = "Münchener Str. 56";
+		vonKarma.address.street = "Münchener Str. 56"; // The console really doesn't like this
 		vonKarma.address.city = "Frankfurt";
 		vonKarma.address.state = null;
 		vonKarma.address.postalCode = 60329;

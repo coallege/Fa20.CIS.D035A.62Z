@@ -21,6 +21,7 @@ public class Name implements Fillable, Display {
 	public List<String> display() {
 		var lines = new ArrayList<String>();
 		if (first == null && last == null) {
+			// both null so just return an empty List
 			return lines;
 		}
 

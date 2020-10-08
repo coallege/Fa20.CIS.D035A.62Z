@@ -2,6 +2,9 @@ package main;
 
 import java.util.Scanner;
 
+/**
+ * Convenient Scanner-like class
+ */
 public class Prompt {
 	private final Scanner sc = new Scanner(System.in);
 
