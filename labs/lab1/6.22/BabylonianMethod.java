@@ -29,7 +29,7 @@ public class BabylonianMethod {
 			String sin;
 			try {
 				sin = sc.nextLine();
-			} catch (NoSuchElementException e) {
+			} catch (Exception e) {
 				out.println("BLANK\nInterrupt. Exiting...");
 				return;
 			}

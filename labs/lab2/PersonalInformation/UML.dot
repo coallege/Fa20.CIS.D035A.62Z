@@ -5,11 +5,6 @@ digraph PersonalInformation {
       shape=record
    ]
 
-   edge [
-      fontname="Bitstream Vera Sans"
-      fontsize=8
-   ]
-
    Fillable [
       label="{Fillable||void Fill(Prompt p)\l}"
    ]

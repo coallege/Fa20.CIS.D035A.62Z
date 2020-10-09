@@ -1,0 +1,35 @@
+digraph UML {
+   node [
+      fontname="Bitstream Vera Sans"
+      fontsize=12
+      shape=record
+   ]
+
+	"Entry" -> Test
+
+	Coin [
+		label="{Coin|-static TOSS_COUNT: int\l~flip(): Face\l|-sideUp: Face\l~toss(): Face\l~toss20(): Face[]\l}"
+	]
+
+	Test [
+		label="{Test|+static main(String[] args): void}"
+	]
+
+	dlsm [
+		label="javax.swing.DefaultListSelectionModel"
+	]
+
+	NoSelectModel [
+		label="{NoSelectModel|+setAnchorSelectionIndex(int): void\l+setLeadAnchorNotificationEnabled(boolean): void\l+setLeadSelectionIndex(int): void\l+setSelectionInterval(int, int): void\l}"
+	]
+
+	GUI [
+		label="{GUI|-static coin: Coin\l-static MONOSPACED: Font\l-static BIGMONOSPACED: Font\l+static run(): void\l-setupFrame(JFrame): void\l-static setupTabs(JTabbedPane): void\l-static setupCoinTossPanel(JPanel): void\l-static setupCoinToss20Panel(JPanel): void\l-static setupResultsList(JList\<String\>): void\l-static showFrame(JFrame): void\l}"
+	]
+
+	CUI [
+		label="{CUI|+static run(Scanner): void\l-static tossOnce(): void\l-static toss20Times(): void\l}"
+	]
+
+	dlsm -> NoSelectModel
+}

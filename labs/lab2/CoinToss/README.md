@@ -34,3 +34,54 @@ The sideUp field will hold either "heads" or "tails" indicating the side of the 
 
 Submit a class diagram, test runs and code (.java file) with your submission.
 Please create a zip file and submit a single attachment for part 2.
+
+# Submission
+
+## Test Run
+
+```
+Please select your preferred display option:
+Please enter a number (default 0)
+[0] Console
+[1] GUI
+> 0
+What should I do?
+[0] Toss the coin once
+[1] Toss the coin twenty times
+[2] Quit
+> 0
+heads
+> 1
+tails
+heads
+tails
+heads
+tails
+heads
+tails
+tails
+heads
+tails
+tails
+heads
+tails
+heads
+tails
+heads
+heads
+tails
+heads
+heads
+Heads: 10
+Tails: 10
+> 2
+```
+
+## GUI
+
+![](GraphicalTestRun0.png)
+![](GraphicalTestRun1.png)
+
+## UML Class Diagram
+
+![](UML.png)
