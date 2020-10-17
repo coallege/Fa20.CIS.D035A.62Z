@@ -3,3 +3,5 @@ run: build
 
 build:
 	javac -d bin $(wildcard src/*.java)
+
+.PHONY: run build
