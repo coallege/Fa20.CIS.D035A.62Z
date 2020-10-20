@@ -1,7 +1,6 @@
-
 public class Franchise {
 	private Store stores[];
-	
+
 	public Franchise(int num) {
 			stores = new Store[num];
 	}

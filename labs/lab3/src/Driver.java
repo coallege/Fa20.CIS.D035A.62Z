@@ -6,5 +6,4 @@ public class Driver {
 		FileIO a1 = new FileIO("Z:\\JavaPrograms2\\assignment336b\\src\\Salesdat.txt");
 		Franchise f = a1.readData();
 	}
-
 }
