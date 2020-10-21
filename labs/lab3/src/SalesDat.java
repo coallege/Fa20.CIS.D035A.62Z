@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.Scanner;
@@ -8,18 +6,19 @@ import java.util.Scanner;
 public class SalesDat {
 	private static Supplier<Optional<File>> tryFile(final String path) {
 		final var file = new File(path);
-		final var opt = file.isFile() ? Optional.of(file) : Optional.<File>empty();
-		return () -> opt;
+		return
+			file.isFile()
+			? () -> Optional.of(file)
+			: Optional::empty;
 	}
 
 	private static final String ZPath = "Z:\\JavaPrograms2\\assignment336b\\src\\Salesdat.txt";
 
 	private static Supplier<Optional<File>> ZFile() {
-		if (System.getProperty("os.name").startsWith("Windows")) {
-			return tryFile(ZPath);
-		} else {
-			return () -> Optional.empty();
-		}
+		return
+			System.getProperty("os.name").startsWith("Windows")
+			? tryFile(ZPath)
+			: Optional::empty;
 	}
 
 	private static final Scanner sc = new Scanner(System.in);

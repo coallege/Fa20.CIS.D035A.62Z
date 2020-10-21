@@ -1,24 +1,30 @@
+import java.util.Arrays;
+
 public class Store {
-	private float salesbyweek[][];
+	/**
+	 * [week_number][day_number]
+	 */
+	public final float[][] sales = new float[5][7];
 
-	Store() {
-		salesbyweek = new float[5][7];
+	private void setSales(short day, float sale) {
+		this.sales[day / 7][day % 7] = sale;
 	}
 
-	// getter and setters
-	// setsaleforweekdayintersection(int week, int day, float sale)
-	public void setsaleforweekdayintersection(int week, int day, float sale) {
-		salesbyweek[week][day] = sale;
+	@SuppressWarnings("unchecked")
+	Store(String line) {
+		short day = 0;
+		for (var sale
+			: (Iterable<Float>) Arrays
+				.stream(line.split("\t"))
+				.map(Float::parseFloat))
+					setSales(day++, sale);
 	}
 
-	public void printdata() {
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 7; j++)
-			{
-				System.out.print(salesbyweek[i][j] + " ");
+	public void printData() {
+		for (short week = 0; week < 5; ++week) {
+			for (short day = 0; day < 7; ++day) {
+				System.out.printf("%-8d", this.sales[week][day]);
 			}
-			System.out.println("");
 		}
 	}
 	// float [] getsalesforentireweek(int week)
