@@ -21,14 +21,14 @@ class IndentBuffer {
 		this.indent = INDENT.repeat(--indentCount);
 	}
 
-	void block(Runnable fn) {
+	void block(final Runnable fn) {
 		var lastIndent = this.indent;
 		this.indent = this.indent + INDENT;
 		fn.run();
 		this.indent = lastIndent;
 	}
 
-	void block(Consumer<IndentBuffer> fn) {
+	void block(final Consumer<IndentBuffer> fn) {
 		var lastIndent = this.indent;
 		this.indent = this.indent + INDENT;
 		fn.accept(this);
@@ -36,11 +36,15 @@ class IndentBuffer {
 	}
 
 	/** Add a line */
-	void l(String line) {
+	void l(final String line) {
 		lines.add(indent + line);
 	}
 
-	void forEach(Consumer<String> fn) {
+	void f(final String fmt, Object... o) {
+		lines.add(indent + String.format(fmt, o));
+	}
+
+	void forEach(final Consumer<String> fn) {
 		lines.forEach(fn);
 	}
 }

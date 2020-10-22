@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 class Store {
 	final String name;
@@ -13,53 +12,52 @@ class Store {
 		new WeeklySales(5),
 	};
 
-	private final Stream<WeeklySales> salesStream;
-
-	private void setSales(int day, double sale) {
+	private void setSales(final int day, final double sale) {
 		this.weeklySales[day / 7].salesByDay[day % 7] = sale;
 	}
 
-	@SuppressWarnings("unchecked")
 	Store(final String name, final String line) {
 		this.name = name;
 		int day = 0;
-		for (var sale
-			: (Iterable<Float>) Arrays
-				.stream(line.split("\t"))
-				.map(Float::parseFloat))
-					setSales(day++, sale);
-
-		this.salesStream = Arrays.stream(this.weeklySales);
+		Iterable<Double> sales = Arrays.stream(line.split("\t")).map(Double::parseDouble)::iterator;
+		for (var sale : sales) {
+			setSales(day++, sale);
+		}
 	}
 
 	double total() {
-		return this.salesStream
+		return Arrays
+			.stream(this.weeklySales)
 			.mapToDouble(ws -> ws.total())
 			.sum();
 	}
 
 	double weeklyAverage() {
-		return this.salesStream
+		return Arrays
+			.stream(this.weeklySales)
 			.mapToDouble(ws -> ws.total())
 			.average()
 			.orElse(0);
 	}
 
 	double dailyAverage() {
-		return this.salesStream
+		return Arrays
+			.stream(this.weeklySales)
 			.mapToDouble(ws -> ws.dailyAverage())
 			.average()
 			.orElse(0);
 	}
 
 	WeeklySales lowestWeek() {
-		return this.salesStream
+		return Arrays
+			.stream(this.weeklySales)
 			.min(WeeklySales::compareTotal)
 			.orElse(null);
 	}
 
 	WeeklySales highestWeek() {
-		return this.salesStream
+		return Arrays
+			.stream(this.weeklySales)
 			.max(WeeklySales::compareTotal)
 			.orElse(null);
 	}
@@ -67,9 +65,9 @@ class Store {
 	void display(final IndentBuffer ib) {
 		ib.l("Store " + this.name);
 		ib.block(() -> {
-			ib.l("Total Sales              : " + this.total());
-			ib.l("Average Weekly Sales     : " + this.weeklyAverage());
-			ib.l("Average Daily Sales      : " + this.dailyAverage());
+			ib.f("Total Sales              : %.2f", this.total());
+			ib.f("Average Weekly Sales     : %.2f", this.weeklyAverage());
+			ib.f("Average Daily Sales      : %.2f", this.dailyAverage());
 			ib.l("Week Highest Total Sales : " + this.highestWeek().name);
 			ib.l("Week Lowest Total Sales  : " + this.lowestWeek().name);
 		});

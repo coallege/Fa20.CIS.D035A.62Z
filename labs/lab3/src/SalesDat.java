@@ -7,11 +7,13 @@ import java.nio.file.Paths;
 
 class SalesDat {
 	private static Supplier<Optional<File>> tryFile(final String path) {
-		final var file = new File(path);
-		return
-			file.isFile()
-			? () -> Optional.of(file)
-			: Optional::empty;
+		return () -> {
+			final var file = new File(path);
+			return
+				file.isFile()
+				? Optional.of(file)
+				: Optional.empty();
+		};
 	}
 
 	private static final String ZPath = "Z:\\JavaPrograms2\\assignment336b\\src\\Salesdat.txt";
@@ -47,19 +49,19 @@ class SalesDat {
 	static {
 		var file = Optional.<File>empty()
 			.or(ZFile())
-			.or(tryFile("./salesdat.txt"))
-			.or(tryFile("./Salesdat.txt"))
-			.or(tryFile("./src/salesdat.txt"))
-			.or(tryFile("./src/Salesdat.txt"))
-			.or(tryFile("./bin/salesdat.txt"))
-			.or(tryFile("./bin/Salesdat.txt"))
+			.or(tryFile("salesdat.txt"))
+			.or(tryFile("Salesdat.txt"))
+			.or(tryFile("src/salesdat.txt"))
+			.or(tryFile("src/Salesdat.txt"))
+			.or(tryFile("bin/salesdat.txt"))
+			.or(tryFile("bin/Salesdat.txt"))
 			.or(tryFile("../src/salesdat.txt"))
 			.or(tryFile("../src/Salesdat.txt"))
 			.or(tryFile("../bin/salesdat.txt"))
 			.or(tryFile("../bin/Salesdat.txt"))
 			.or(tryFile("../salesdat.txt"))
 			.or(tryFile("../Salesdat.txt"))
-			.orElse(prompt())
+			.orElseGet(SalesDat::prompt)
 			.getAbsolutePath();
 
 		System.out.println("Path: " + file);
