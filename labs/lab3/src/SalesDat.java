@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class SalesDat {
+class SalesDat {
 	private static Supplier<Optional<File>> tryFile(final String path) {
 		final var file = new File(path);
 		return

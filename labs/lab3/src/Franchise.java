@@ -1,6 +1,7 @@
 import java.util.List;
+import java.util.ArrayList;
 
-public class Franchise {
+class Franchise implements Display {
 	final Store[] stores;
 
 	Franchise(List<String> lines) {
@@ -13,5 +14,15 @@ public class Franchise {
 		for (var line : lines) {
 			this.stores[idx++] = new Store(line);
 		}
+	}
+
+	public List<String> display() {
+		var list = new ArrayList<String>(60);
+		list.add("Franchise");
+
+		for (var store : this.stores) {
+			store.
+		}
+		return list;
 	}
 }

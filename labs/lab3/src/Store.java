@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Store {
+class Store {
 	final WeeklySales[] sales = new WeeklySales[5];
 
 	private void setSales(int day, double sale) {

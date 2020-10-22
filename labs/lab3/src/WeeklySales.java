@@ -1,6 +1,6 @@
-import java.util.Arrays;
+import java.util.*;
 
-class WeeklySales {
+class WeeklySales implements Display {
 	final double[] salesByDay = new double[7];
 
 	double total() {
@@ -9,5 +9,9 @@ class WeeklySales {
 
 	double average() {
 		return Arrays.stream(this.salesByDay).average().orElse(0);
+	}
+
+	public List<String> display() {
+		
 	}
 }

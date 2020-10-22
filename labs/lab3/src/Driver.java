@@ -12,6 +12,9 @@ public class Driver {
 			return;
 		}
 
-		Franchise.fromLines(lines);
+		var f = new Franchise(lines);
+		for (var line : Franchise.display()) {
+			System.out.println(line);
+		}
 	}
 }
