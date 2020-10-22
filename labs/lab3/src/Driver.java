@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.nio.file.Files;
 
@@ -13,7 +14,11 @@ public class Driver {
 		}
 
 		var f = new Franchise(lines);
-		for (var line : Franchise.display()) {
+		var ib = new IndentBuffer(new ArrayList<>(100));
+		ib.l("Franchise");
+		ib.block(f::display);
+
+		for (var line : ib.lines) {
 			System.out.println(line);
 		}
 	}

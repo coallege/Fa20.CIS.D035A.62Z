@@ -7,7 +7,7 @@ class WeeklySales implements Display {
 		return Arrays.stream(this.salesByDay).sum();
 	}
 
-	double average() {
+	double dailyAverage() {
 		return Arrays.stream(this.salesByDay).average().orElse(0);
 	}
 

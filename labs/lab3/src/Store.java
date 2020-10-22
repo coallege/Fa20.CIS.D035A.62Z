@@ -17,6 +17,33 @@ class Store {
 					setSales(day++, sale);
 	}
 
+	double dailyAverage() {
+		return Arrays
+			.stream(this.sales)
+			.mapToDouble(ws -> ws.dailyAverage())
+			.average()
+			.orElse(0);
+	}
+
+	double weeklyAverage() {
+		return Arrays
+			.stream(this.sales)
+			.mapToDouble(ws -> ws.total())
+			.average()
+			.orElse(0);
+	}
+
+	double total() {
+		return Arrays
+			.stream(this.sales)
+			.mapToDouble(ws -> ws.total())
+			.sum();
+	}
+
+	void display(IndentBuffer ib) {
+		
+	}
+
 	void printData() {
 		for (int week = 0; week < 5; ++week) {
 			for (int day = 0; day < 7; ++day) {
