@@ -1,20 +1,17 @@
+import java.util.List;
+
 public class Franchise {
-	private Store stores[];
+	final Store[] stores;
 
-	public Franchise(int num) {
-			stores = new Store[num];
-	}
+	Franchise(List<String> lines) {
+		var storeCount = Integer.parseInt(lines.remove(0));
+		this.stores = new Store[storeCount];
 
-	public Store getStores(int i) {
-		return stores[i];
-	}
+		lines.remove(0); // remove the days
 
-	public void setStores(Store stores, int i) {
-		this.stores[i] = stores;
+		var idx = 0;
+		for (var line : lines) {
+			this.stores[idx++] = new Store(line);
+		}
 	}
-	public int numberofstores()
-	{
-		return stores.length;
-	}
-	
 }

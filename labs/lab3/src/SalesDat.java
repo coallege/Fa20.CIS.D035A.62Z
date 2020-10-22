@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.Scanner;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class SalesDat {
 	private static Supplier<Optional<File>> tryFile(final String path) {
@@ -40,7 +42,7 @@ public class SalesDat {
 		}
 	}
 
-	public static FileReader location;
+	public static Path path;
 
 	static {
 		var file = Optional.<File>empty()
@@ -57,13 +59,10 @@ public class SalesDat {
 			.or(tryFile("../bin/Salesdat.txt"))
 			.or(tryFile("../salesdat.txt"))
 			.or(tryFile("../Salesdat.txt"))
-			.orElse(prompt());
+			.orElse(prompt())
+			.getAbsolutePath();
 
-		try {
-			location = new FileReader(file);
-			System.out.println("Found " + file.getAbsolutePath());
-		} catch (FileNotFoundException e) {
-			System.err.println("Could not find Salesdat.txt: " + file.getAbsolutePath());
-		}
+		System.out.println("Path: " + file);
+		path = Paths.get(file);
 	}
 }

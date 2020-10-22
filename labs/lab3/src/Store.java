@@ -1,18 +1,15 @@
 import java.util.Arrays;
 
 public class Store {
-	/**
-	 * [week_number][day_number]
-	 */
-	public final float[][] sales = new float[5][7];
+	final WeeklySales[] sales = new WeeklySales[5];
 
-	private void setSales(short day, float sale) {
-		this.sales[day / 7][day % 7] = sale;
+	private void setSales(int day, double sale) {
+		this.sales[day / 7].salesByDay[day % 7] = sale;
 	}
 
 	@SuppressWarnings("unchecked")
 	Store(String line) {
-		short day = 0;
+		int day = 0;
 		for (var sale
 			: (Iterable<Float>) Arrays
 				.stream(line.split("\t"))
@@ -20,15 +17,13 @@ public class Store {
 					setSales(day++, sale);
 	}
 
-	public void printData() {
-		for (short week = 0; week < 5; ++week) {
-			for (short day = 0; day < 7; ++day) {
-				System.out.printf("%-8d", this.sales[week][day]);
+	void printData() {
+		for (int week = 0; week < 5; ++week) {
+			for (int day = 0; day < 7; ++day) {
+				System.out.printf("%-8d", this.sales[week].salesByDay[day]);
 			}
 		}
 	}
-	// float [] getsalesforentireweek(int week)
-	// float getsaleforweekdayintersection(int week, int day)
 	// businessmethod
 	// a. totalsalesforweek
 	// b. avgsalesforweek
