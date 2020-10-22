@@ -64,7 +64,7 @@ class SalesDat {
 			.orElseGet(SalesDat::prompt)
 			.getAbsolutePath();
 
-		System.out.println("Path: " + file);
+		System.out.println("Found Salesdat.txt at " + file);
 		path = Paths.get(file);
 	}
 }

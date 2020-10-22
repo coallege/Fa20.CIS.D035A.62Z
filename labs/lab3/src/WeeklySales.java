@@ -34,7 +34,7 @@ class WeeklySales {
 		ib.l("Week " + this.name);
 		ib.block(() -> {
 			ib.f("Weekly Total  : %.2f", this.total());
-			ib.f("Daily Average : %.2f", this.total());
+			ib.f("Daily Average : %.2f", this.dailyAverage());
 			ib.l(WEEKDAYS);
 			ib.f(
 				("%-" + WIDTH + ".2f ").repeat(7),

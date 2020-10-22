@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 class Franchise {
@@ -18,12 +19,29 @@ class Franchise {
 		}
 	}
 
+	double total() {
+		return Arrays
+			.stream(this.stores)
+			.mapToDouble(store -> store.total())
+			.sum();
+	}
+
+	double dailyAverage() {
+		return Arrays
+			.stream(this.stores)
+			.mapToDouble(store -> store.dailyAverage())
+			.sum();
+	}
+
 	void display(IndentBuffer ib) {
 		ib.l("Franchise " + this.name);
 		ib.block(() -> {
-			for (var store : this.stores) {
-				ib.block(store::display);
-			}
+			ib.f("Franchise Total Sales         : %.2f", this.total());
+			ib.f("Franchise Average Daily Sales : %.2f", this.dailyAverage());
 		});
+
+		for (var store : this.stores) {
+			ib.block(store::display);
+		}
 	}
 }
