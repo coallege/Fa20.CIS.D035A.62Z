@@ -2,8 +2,11 @@ import java.util.List;
 
 class Franchise {
 	final Store[] stores;
+	final String name;
 
-	Franchise(List<String> lines) {
+	Franchise(final String name, final List<String> lines) {
+		this.name = name;
+
 		var storeCount = Integer.parseInt(lines.remove(0));
 		this.stores = new Store[storeCount];
 
@@ -11,14 +14,16 @@ class Franchise {
 
 		var idx = 0;
 		for (var line : lines) {
-			this.stores[idx++] = new Store(line);
+			this.stores[idx++] = new Store(Integer.toString(idx), line);
 		}
 	}
 
 	void display(IndentBuffer ib) {
-		for (var i = 0; i < this.stores.length; ++i) {
-			ib.l("Store " + + + i);
-			ib.block(this.stores[i]::display);
-		}
+		ib.l("Franchise " + this.name);
+		ib.block(() -> {
+			for (var store : this.stores) {
+				ib.block(store::display);
+			}
+		});
 	}
 }

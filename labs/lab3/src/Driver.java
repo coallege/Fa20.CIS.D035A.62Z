@@ -13,13 +13,10 @@ public class Driver {
 			return;
 		}
 
-		var f = new Franchise(lines);
+		var f = new Franchise("Unknown Franchise", lines);
 		var ib = new IndentBuffer(new ArrayList<>(100));
-		ib.l("Franchise");
-		ib.block(f::display);
+		f.display(ib);
 
-		for (var line : ib.lines) {
-			System.out.println(line);
-		}
+		ib.forEach(System.out::println);
 	}
 }

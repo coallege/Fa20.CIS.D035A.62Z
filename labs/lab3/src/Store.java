@@ -1,63 +1,81 @@
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 class Store {
-	final WeeklySales[] sales = new WeeklySales[5];
+	final String name;
+
+	/** Gonna get a nice NPE if you try to go above 35 days */
+	final WeeklySales[] weeklySales = {
+		new WeeklySales(1),
+		new WeeklySales(2),
+		new WeeklySales(3),
+		new WeeklySales(4),
+		new WeeklySales(5),
+	};
+
+	private final Stream<WeeklySales> salesStream;
 
 	private void setSales(int day, double sale) {
-		this.sales[day / 7].salesByDay[day % 7] = sale;
+		this.weeklySales[day / 7].salesByDay[day % 7] = sale;
 	}
 
 	@SuppressWarnings("unchecked")
-	Store(String line) {
+	Store(final String name, final String line) {
+		this.name = name;
 		int day = 0;
 		for (var sale
 			: (Iterable<Float>) Arrays
 				.stream(line.split("\t"))
 				.map(Float::parseFloat))
 					setSales(day++, sale);
+
+		this.salesStream = Arrays.stream(this.weeklySales);
+	}
+
+	double total() {
+		return this.salesStream
+			.mapToDouble(ws -> ws.total())
+			.sum();
+	}
+
+	double weeklyAverage() {
+		return this.salesStream
+			.mapToDouble(ws -> ws.total())
+			.average()
+			.orElse(0);
 	}
 
 	double dailyAverage() {
-		return Arrays
-			.stream(this.sales)
+		return this.salesStream
 			.mapToDouble(ws -> ws.dailyAverage())
 			.average()
 			.orElse(0);
 	}
 
-	double weeklyAverage() {
-		return Arrays
-			.stream(this.sales)
-			.mapToDouble(ws -> ws.total())
-			.average()
-			.orElse(0);
+	WeeklySales lowestWeek() {
+		return this.salesStream
+			.min(WeeklySales::compareTotal)
+			.orElse(null);
 	}
 
-	double total() {
-		return Arrays
-			.stream(this.sales)
-			.mapToDouble(ws -> ws.total())
-			.sum();
+	WeeklySales highestWeek() {
+		return this.salesStream
+			.max(WeeklySales::compareTotal)
+			.orElse(null);
 	}
 
-	void display(IndentBuffer ib) {
-		
-	}
+	void display(final IndentBuffer ib) {
+		ib.l("Store " + this.name);
+		ib.block(() -> {
+			ib.l("Total Sales              : " + this.total());
+			ib.l("Average Weekly Sales     : " + this.weeklyAverage());
+			ib.l("Average Daily Sales      : " + this.dailyAverage());
+			ib.l("Week Highest Total Sales : " + this.highestWeek().name);
+			ib.l("Week Lowest Total Sales  : " + this.lowestWeek().name);
+		});
 
-	void printData() {
-		for (int week = 0; week < 5; ++week) {
-			for (int day = 0; day < 7; ++day) {
-				System.out.printf("%-8d", this.sales[week].salesByDay[day]);
-			}
+		for (var ws : this.weeklySales) {
+			ib.block(ws::display);
 		}
 	}
-	// businessmethod
-	// a. totalsalesforweek
-	// b. avgsalesforweek
-	// c. totalsalesforallweeks
-	// d. averageweeklysales
-	// e. weekwithhighestsaleamt
-	// f. weekwithlowestsaleamt
-	// analyzeresults //call a through f
-	// print()
 }

@@ -2,9 +2,9 @@ import java.util.List;
 import java.util.function.Consumer;
 
 class IndentBuffer {
-	final List<String> lines;
+	private final List<String> lines;
 
-	IndentBuffer(List<String> list) {
+	IndentBuffer(final List<String> list) {
 		this.lines = list;
 	}
 
@@ -21,6 +21,13 @@ class IndentBuffer {
 		this.indent = INDENT.repeat(--indentCount);
 	}
 
+	void block(Runnable fn) {
+		var lastIndent = this.indent;
+		this.indent = this.indent + INDENT;
+		fn.run();
+		this.indent = lastIndent;
+	}
+
 	void block(Consumer<IndentBuffer> fn) {
 		var lastIndent = this.indent;
 		this.indent = this.indent + INDENT;
@@ -31,5 +38,9 @@ class IndentBuffer {
 	/** Add a line */
 	void l(String line) {
 		lines.add(indent + line);
+	}
+
+	void forEach(Consumer<String> fn) {
+		lines.forEach(fn);
 	}
 }

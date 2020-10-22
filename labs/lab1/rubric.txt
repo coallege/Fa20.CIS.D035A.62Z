@@ -1,0 +1,28 @@
+Errors
+No errors, program always works correctly and meets the specifications
+4.0 pts
+
+Reuse
+Code could be reused as a whole or each routine could be used.
+2.0 pts
+
+Classes
+Concepts of creating an object and leveraging classes to use instance variables and methods applied
+4.0 pts
+
+Coventions
+Java Coding Conventions Followed
+4.0 pts
+
+Code Readability
+Code Readability (as suggested in class)
+2.0 pts
+
+Tested
+Adequately Tested (Unique Test Cases, Covering Boundary Conditions)
+2.0 pts
+
+Test Criterion
+2.0 pts
+
+Total Points Possible: 20.0
