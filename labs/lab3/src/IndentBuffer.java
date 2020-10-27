@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
@@ -46,5 +47,15 @@ class IndentBuffer {
 
 	void clear() {
 		this.lines.clear();
+	}
+
+	static void ephermeralForeach(final Consumer<IndentBuffer> ibfn, final Consumer<String> sfn) {
+		var eph_ib = new IndentBuffer(new ArrayList<>(50));
+		ibfn.accept(eph_ib);
+		eph_ib.forEach(sfn);
+	}
+
+	static void stdoutBuffer(final Consumer<IndentBuffer> ibfn) {
+		ephermeralForeach(ibfn, System.out::println);
 	}
 }
