@@ -68,8 +68,8 @@ class Store {
 			ib.f("Total Sales              : %.2f", this.total());
 			ib.f("Average Weekly Sales     : %.2f", this.weeklyAverage());
 			ib.f("Average Daily Sales      : %.2f", this.dailyAverage());
-			ib.l("Week Highest Total Sales : " + this.highestWeek().name);
-			ib.l("Week Lowest Total Sales  : " + this.lowestWeek().name);
+			ib.l("Week Highest Total Sales : Week " + this.highestWeek().name);
+			ib.l("Week Lowest Total Sales  : Week " + this.lowestWeek().name);
 		});
 
 		for (var ws : this.weeklySales) {

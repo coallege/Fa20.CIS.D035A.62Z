@@ -11,11 +11,20 @@ class WeeklySales {
 	final double[] salesByDay = new double[7];
 
 	double total() {
-		return Arrays.stream(this.salesByDay).sum();
+		return Arrays
+			.stream(this.salesByDay)
+			.sum();
 	}
 
+	private static final String AVG_ERR = (
+		"Trying to average sales when there are no sales to average!"
+	);
+
 	double dailyAverage() {
-		return Arrays.stream(this.salesByDay).average().orElse(0);
+		return Arrays
+			.stream(this.salesByDay)
+			.average()
+			.orElseThrow(DivideByZeroException.make(AVG_ERR));
 	}
 
 	private static final int WIDTH = 10;

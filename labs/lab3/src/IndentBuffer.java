@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -8,18 +9,9 @@ class IndentBuffer {
 		this.lines = list;
 	}
 
-	private static final String INDENT = "   ";
-	private int indentCount = 0;
+	public static final String INDENT = "   ";
 
 	private String indent = "";
-
-	void indent() {
-		this.indent = INDENT.repeat(++indentCount);
-	}
-
-	void outdent() {
-		this.indent = INDENT.repeat(--indentCount);
-	}
 
 	void block(final Runnable fn) {
 		var lastIndent = this.indent;
@@ -37,14 +29,22 @@ class IndentBuffer {
 
 	/** Add a line */
 	void l(final String line) {
-		lines.add(indent + line);
+		this.lines.add(indent + line);
 	}
 
 	void f(final String fmt, Object... o) {
-		lines.add(indent + String.format(fmt, o));
+		this.lines.add(indent + String.format(fmt, o));
 	}
 
 	void forEach(final Consumer<String> fn) {
-		lines.forEach(fn);
+		this.lines.forEach(fn);
+	}
+
+	List<String> list() {
+		return Collections.unmodifiableList(this.lines);
+	}
+
+	void clear() {
+		this.lines.clear();
 	}
 }
