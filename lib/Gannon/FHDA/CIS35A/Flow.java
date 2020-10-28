@@ -1,6 +1,6 @@
-package Gannon;
+package Gannon.FHDA.CIS35A;
 
-import Gannon.functional.*;
+import Gannon.FHDA.CIS35A.functional.*;
 
 public class Flow {
 	public static void unchecked(ThrowingRunnable fn) {

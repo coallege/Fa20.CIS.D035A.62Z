@@ -26,7 +26,8 @@ public class Main {
 			+ "> "
 		);
 
-		var input = new Scanner(System.in).nextLine();
+		var sc = new Scanner(System.in);
+		var input = sc.nextLine();
 		if (input.equals("0")) {
 			display(TestPeople.payne);
 			display(TestPeople.vonKarma);
@@ -48,5 +49,6 @@ public class Main {
 			display(person2);
 			display(person3);
 		}
+		sc.close();
 	}
 }

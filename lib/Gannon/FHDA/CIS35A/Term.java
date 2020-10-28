@@ -1,4 +1,4 @@
-package Gannon;
+package Gannon.FHDA.CIS35A;
 
 import static java.lang.System.*;
 import java.util.Scanner;
