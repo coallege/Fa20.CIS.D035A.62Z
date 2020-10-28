@@ -6,6 +6,11 @@ public class DivideByZeroException extends RuntimeException {
 		super(reason);
 	}
 
+	/**
+	 * make :: String -> () -> DivideByZeroException
+	 *
+	 * Mostly useful for OptionalDouble.orElseThrow()
+	 */
 	static Supplier<DivideByZeroException> make(final String reason) {
 		return () -> new DivideByZeroException(reason);
 	}

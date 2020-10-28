@@ -27,7 +27,7 @@ class SalesDat {
 
 	private static final Scanner sc = new Scanner(System.in);
 	private static File prompt() {
-		System.out.print("Please enter the path to Salesdat.txt\n> ");
+		System.out.print("Please enter the path to Salesdat.txt\n(ctrl+c to exit)\n> ");
 		try {
 			var file = new File(sc.nextLine());
 
@@ -48,7 +48,9 @@ class SalesDat {
 
 	static {
 		var file = Optional.<File>empty()
+			// if it's a windows box, try that weird hardcoded path
 			.or(ZFile())
+			// else try all these
 			.or(tryFile("salesdat.txt"))
 			.or(tryFile("Salesdat.txt"))
 			.or(tryFile("src/salesdat.txt"))
@@ -61,10 +63,11 @@ class SalesDat {
 			.or(tryFile("../bin/Salesdat.txt"))
 			.or(tryFile("../salesdat.txt"))
 			.or(tryFile("../Salesdat.txt"))
+			// if none of these are regular files, just prompt the user.
 			.orElseGet(SalesDat::prompt)
 			.getAbsolutePath();
 
-		System.out.println("Found Salesdat.txt at " + file);
+		// System.out.println("Found Salesdat.txt at " + file);
 		path = Paths.get(file);
 	}
 }

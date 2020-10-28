@@ -2,12 +2,16 @@ import java.util.*;
 
 class WeeklySales {
 	/** Actually just the week number but let's keep the naming consistent */
-	final int name;
+	final int name; // it's actually kind of annoying that this is not a String
 
 	WeeklySales(final int name) {
 		this.name = name;
 	}
 
+	/**
+	 * So this isn't ever filled with data within WeeklySales.
+	 * The Store class is the one that actually fills this double array with data.
+	 */
 	final double[] salesByDay = new double[7];
 
 	double total() {
@@ -24,9 +28,15 @@ class WeeklySales {
 		return Arrays
 			.stream(this.salesByDay)
 			.average()
+			// from my testing, this never actually gets run because there's always
+			// something in that salesByDay array, even if it's just zeros.
 			.orElseThrow(DivideByZeroException.make(AVG_ERR));
 	}
 
+	/**
+	 * The width of the number that is printed out.
+	 * If it's less than 7, things are going to have a bad time.
+	 */
 	private static final int WIDTH = 10;
 	private static final String SPACES = " ".repeat(WIDTH - 2);
 	private static final String WEEKDAYS = (""
@@ -39,6 +49,13 @@ class WeeklySales {
 		+ "Sat" + SPACES
 	);
 
+	/* Looks like this if WIDTH = 10:
+	   Week 5
+         Weekly Total  : 43896.93
+         Daily Average : 6270.99
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         6009.99    6096.99    6183.99    6270.99    6357.99    6444.99    6531.99
+	*/
 	void display(final IndentBuffer ib) {
 		ib.l("Week " + this.name);
 		ib.block(() -> {
@@ -58,6 +75,10 @@ class WeeklySales {
 		});
 	}
 
+	/**
+	 * When finding the lowest and the highest weeks, you need a Comparator.
+	 * This function is that Comparator and is pulled from WeeklySales by Store.
+	 */
 	static int compareTotal(final WeeklySales a, final WeeklySales b) {
 		var aTotal = a.total();
 		var bTotal = b.total();
