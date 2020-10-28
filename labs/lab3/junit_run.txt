@@ -1,0 +1,9 @@
+make test
+javac -d bin src/Driver.java src/Franchise.java src/IndentBuffer.java src/SalesDat.java src/Store.java src/WeeklySales.java
+javac -cp "src;lib/*" -d bin test/FranchiseTest.java test/IndentBufferTest.java test/SalesDatTest.java test/StoreTest.java test/WeeklySalesTest.java
+java -cp "bin;lib/*" org.junit.runner.JUnitCore FranchiseTest IndentBufferTest SalesDatTest StoreTest WeeklySalesTest
+JUnit version 4.13.1
+...............
+Time: 0.035
+
+OK (15 tests)

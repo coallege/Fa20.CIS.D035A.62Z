@@ -4,11 +4,9 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 public class IndentBufferTest {
-	private IndentBuffer ib = new IndentBuffer(new ArrayList<>());
-
 	@Test
 	public void blockDoesIndent() {
-		ib.clear();
+		var ib = new IndentBuffer();
 		ib.l("initial");
 		ib.block(() -> {
 			ib.l("test");
@@ -21,7 +19,7 @@ public class IndentBufferTest {
 
 	@Test
 	public void blockDoesOutdent() {
-		ib.clear();
+		var ib = new IndentBuffer();
 		ib.l("initial");
 		ib.block(() -> {});
 		ib.l("outdent");
@@ -32,6 +30,7 @@ public class IndentBufferTest {
 
 	@Test
 	public void totalMakesSense() {
+		var ib = new IndentBuffer();
 		ib.l("one");
 		ib.l("two");
 		ib.l("3");

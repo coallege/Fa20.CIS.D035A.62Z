@@ -20,17 +20,11 @@ class WeeklySales {
 			.sum();
 	}
 
-	private static final String AVG_ERR = (
-		"Trying to average sales when there are no sales to average!"
-	);
-
 	double dailyAverage() {
 		return Arrays
 			.stream(this.salesByDay)
 			.average()
-			// from my testing, this never actually gets run because there's always
-			// something in that salesByDay array, even if it's just zeros.
-			.orElseThrow(DivideByZeroException.make(AVG_ERR));
+			.orElse(0);
 	}
 
 	/**

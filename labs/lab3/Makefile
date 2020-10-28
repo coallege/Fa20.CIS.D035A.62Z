@@ -13,4 +13,7 @@ build:
 build-tests:
 	javac -cp "src;lib/*" -d bin $(test)
 
-.PHONY: run build
+uml:
+	dot -Tpng UML.dot -o UML.png
+
+.PHONY: run test build build-tests uml

@@ -1,0 +1,37 @@
+digraph lab3 {
+   node [
+      fontname="Bitstream Vera Sans"
+      fontsize=8
+      shape=record
+   ]
+
+	Driver [
+		label="{Driver||+static void main(String[] args)\l}"
+	]
+
+	Franchise [
+		label="{Franchise|final Store[] stores\lfinal String name\l|double total()\ldouble dailyAverage()\lvoid display(IndentBuffer ib)\l}"
+	]
+
+	IndentBuffer [
+		label="{IndentBuffer||void block(final Runnable fn)\lvoid block(final Consumer\<IndentBuffer\> fn)\lvoid l(final String line)\lvoid f(final String fmt, Object... o)\lvoid forEach(final Consumer\<String\> fn)\lString[] asArray()\lList\<String\> asList()\lvoid dumpStdout()\lvoid dumpStderr()\l}"
+	]
+
+	SalesDat [
+		label="{SalesDat|+static Path path\l}"
+	]
+
+	Store [
+		label="{Store|final String name\lfinal WeeklySales[] weeklySales\l|double total()\ldouble weeklyAverage()\ldouble dailyAverage()\lWeeklySales lowestWeek()\lWeeklySales highestWeek()\lvoid display(final IndentBuffer ib)\l}"
+	]
+
+	WeeklySales [
+		label="{WeeklySales|final int name\lfinal double[] salesByDay\l|static int compareTotal(final WeeklySales a, final WeeklySales b)\ldouble total()\ldouble dailyAverage()\lvoid display(final IndentBuffer ib)\l}"
+	]
+	IndentBuffer -> Driver [label="IndentBuffer Created In"]
+	IndentBuffer -> Store [label="Passed To"]
+	IndentBuffer -> WeeklySales [label="Passed To"]
+	"Salesdat.txt" -> Driver
+	"Salesdat.txt" -> SalesDat
+	SalesDat -> Driver -> Franchise -> Store -> WeeklySales
+}

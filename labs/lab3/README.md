@@ -26,3 +26,32 @@ Please make sure that you:
 2. Add comments to your code in FileIO class.
 3. Make sure you adequately test your code.
 4. Provide a user-friendly interface (Console based).
+
+# Submission
+
+The build system is just a simple Makefile.
+It probably only works on Windows.
+
+### 1.
+
+I did the class diagram in a different way this time.
+Instead of showing inheritance, which is not that useful, I showed the
+relationship between classes and their use in the code.
+
+![](UML.png)
+
+### 2.
+
+The `FileIO` class was not needed. Entrypoint is `Driver`.
+
+### 3.
+
+A test run is located in [test_run.txt](test_run.txt).
+
+I also learned a little bit of JUnit for this project. All JUnit tests passed.
+The output is in [junit_run.txt](junit_run.txt).
+
+### 4.
+
+Given that the program is not interactive, I suppose the user interface is
+pretty friendly, given how nice the output is.

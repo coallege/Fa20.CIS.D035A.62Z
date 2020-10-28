@@ -85,9 +85,13 @@ https://github.com/eclipse/eclipse.jdt.core/blob/553e15826cc46c11229f17fd6da0fa4
 #### Invisible/Implicit Projects
 
 So there exist "invisible" projects which are stored in the Java language server
-workspace.
+workspace. They can hold shadow files like the `.project` and `.classpath`.
 
 ### Gradle
 
 Learned about the basics of how Gradle works and even set up a small project.
 
+
+### JUnit
+
+It's a pain to set up manually but it works, I suppose.
