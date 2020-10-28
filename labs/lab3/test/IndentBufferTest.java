@@ -14,7 +14,7 @@ public class IndentBufferTest {
 			ib.l("test");
 		});
 
-		var lines = ib.list();
+		var lines = ib.asList();
 		assertEquals("initial", lines.get(0));
 		assertEquals(IndentBuffer.INDENT + "test", lines.get(1));
 	}
@@ -25,7 +25,7 @@ public class IndentBufferTest {
 		ib.l("initial");
 		ib.block(() -> {});
 		ib.l("outdent");
-		var lines = ib.list();
+		var lines = ib.asList();
 		assertEquals("initial", lines.get(0));
 		assertEquals("outdent", lines.get(1));
 	}
@@ -47,7 +47,7 @@ public class IndentBufferTest {
 		ib.l("9");
 		ib.l("ten");
 
-		var lines = ib.list().toArray(new String[10]);
+		var lines = ib.asList().toArray(new String[10]);
 		String[] expected = {
 			"one",
 			"two",

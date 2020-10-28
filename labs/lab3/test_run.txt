@@ -1,0 +1,192 @@
+javac -d bin src/DivideByZeroException.java src/Driver.java src/Franchise.java src/IndentBuffer.java src/SalesDat.java src/Store.java src/WeeklySales.java
+java -cp bin Driver
+Found Salesdat.txt at \labs\lab3\src\salesdat.txt
+Franchise Unknown Franchise
+   Franchise Total Sales         : 835176.82
+   Franchise Average Daily Sales : 23862.19
+   Store 1
+      Total Sales              : 124457.52
+      Average Weekly Sales     : 24891.50
+      Average Daily Sales      : 3555.93
+      Week Highest Total Sales : Week 5
+      Week Lowest Total Sales  : Week 1
+      Week 1
+         Weekly Total  : 16419.52
+         Daily Average : 2345.65
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         2541.56    2258.96    2214.00    2256.00    2154.00    2398.00    2597.00
+      Week 2
+         Weekly Total  : 20615.00
+         Daily Average : 2945.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         2684.00    2771.00    2858.00    2945.00    3032.00    3119.00    3206.00
+      Week 3
+         Weekly Total  : 24878.00
+         Daily Average : 3554.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3293.00    3380.00    3467.00    3554.00    3641.00    3728.00    3815.00
+      Week 4
+         Weekly Total  : 29141.00
+         Daily Average : 4163.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3902.00    3989.00    4076.00    4163.00    4250.00    4337.00    4424.00
+      Week 5
+         Weekly Total  : 33404.00
+         Daily Average : 4772.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4511.00    4598.00    4685.00    4772.00    4859.00    4946.00    5033.00
+   Store 2
+      Total Sales              : 106957.52
+      Average Weekly Sales     : 21391.50
+      Average Daily Sales      : 3055.93
+      Week Highest Total Sales : Week 5
+      Week Lowest Total Sales  : Week 1
+      Week 1
+         Weekly Total  : 12919.52
+         Daily Average : 1845.65
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         2041.56    1758.96    1714.00    1756.00    1654.00    1898.00    2097.00
+      Week 2
+         Weekly Total  : 17115.00
+         Daily Average : 2445.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         2184.00    2271.00    2358.00    2445.00    2532.00    2619.00    2706.00
+      Week 3
+         Weekly Total  : 21378.00
+         Daily Average : 3054.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         2793.00    2880.00    2967.00    3054.00    3141.00    3228.00    3315.00
+      Week 4
+         Weekly Total  : 25641.00
+         Daily Average : 3663.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3402.00    3489.00    3576.00    3663.00    3750.00    3837.00    3924.00
+      Week 5
+         Weekly Total  : 29904.00
+         Daily Average : 4272.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4011.00    4098.00    4185.00    4272.00    4359.00    4446.00    4533.00
+   Store 3
+      Total Sales              : 141957.52
+      Average Weekly Sales     : 28391.50
+      Average Daily Sales      : 4055.93
+      Week Highest Total Sales : Week 5
+      Week Lowest Total Sales  : Week 1
+      Week 1
+         Weekly Total  : 19919.52
+         Daily Average : 2845.65
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3041.56    2758.96    2714.00    2756.00    2654.00    2898.00    3097.00
+      Week 2
+         Weekly Total  : 24115.00
+         Daily Average : 3445.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3184.00    3271.00    3358.00    3445.00    3532.00    3619.00    3706.00
+      Week 3
+         Weekly Total  : 28378.00
+         Daily Average : 4054.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3793.00    3880.00    3967.00    4054.00    4141.00    4228.00    4315.00
+      Week 4
+         Weekly Total  : 32641.00
+         Daily Average : 4663.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4402.00    4489.00    4576.00    4663.00    4750.00    4837.00    4924.00
+      Week 5
+         Weekly Total  : 36904.00
+         Daily Average : 5272.00
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         5011.00    5098.00    5185.00    5272.00    5359.00    5446.00    5533.00
+   Store 4
+      Total Sales              : 160226.82
+      Average Weekly Sales     : 32045.36
+      Average Daily Sales      : 4577.91
+      Week Highest Total Sales : Week 5
+      Week Lowest Total Sales  : Week 1
+      Week 1
+         Weekly Total  : 23573.38
+         Daily Average : 3367.63
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3563.54    3280.94    3235.98    3277.98    3175.98    3419.98    3618.98
+      Week 2
+         Weekly Total  : 27768.86
+         Daily Average : 3966.98
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3705.98    3792.98    3879.98    3966.98    4053.98    4140.98    4227.98
+      Week 3
+         Weekly Total  : 32031.86
+         Daily Average : 4575.98
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4314.98    4401.98    4488.98    4575.98    4662.98    4749.98    4836.98
+      Week 4
+         Weekly Total  : 36294.86
+         Daily Average : 5184.98
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4923.98    5010.98    5097.98    5184.98    5271.98    5358.98    5445.98
+      Week 5
+         Weekly Total  : 40557.86
+         Daily Average : 5793.98
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         5532.98    5619.98    5706.98    5793.98    5880.98    5967.98    6054.98
+   Store 5
+      Total Sales              : 124655.27
+      Average Weekly Sales     : 24931.05
+      Average Daily Sales      : 3561.58
+      Week Highest Total Sales : Week 5
+      Week Lowest Total Sales  : Week 1
+      Week 1
+         Weekly Total  : 16459.07
+         Daily Average : 2351.30
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         2547.21    2264.61    2219.65    2261.65    2159.65    2403.65    2602.65
+      Week 2
+         Weekly Total  : 20654.55
+         Daily Average : 2950.65
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         2689.65    2776.65    2863.65    2950.65    3037.65    3124.65    3211.65
+      Week 3
+         Weekly Total  : 24917.55
+         Daily Average : 3559.65
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3298.65    3385.65    3472.65    3559.65    3646.65    3733.65    3820.65
+      Week 4
+         Weekly Total  : 29180.55
+         Daily Average : 4168.65
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         3907.65    3994.65    4081.65    4168.65    4255.65    4342.65    4429.65
+      Week 5
+         Weekly Total  : 33443.55
+         Daily Average : 4777.65
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4516.65    4603.65    4690.65    4777.65    4864.65    4951.65    5038.65
+   Store 6
+      Total Sales              : 176922.17
+      Average Weekly Sales     : 35384.43
+      Average Daily Sales      : 5054.92
+      Week Highest Total Sales : Week 5
+      Week Lowest Total Sales  : Week 1
+      Week 1
+         Weekly Total  : 26912.45
+         Daily Average : 3844.64
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4040.55    3757.95    3712.99    3754.99    3652.99    3896.99    4095.99
+      Week 2
+         Weekly Total  : 31107.93
+         Daily Average : 4443.99
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4182.99    4269.99    4356.99    4443.99    4530.99    4617.99    4704.99
+      Week 3
+         Weekly Total  : 35370.93
+         Daily Average : 5052.99
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         4791.99    4878.99    4965.99    5052.99    5139.99    5226.99    5313.99
+      Week 4
+         Weekly Total  : 39633.93
+         Daily Average : 5661.99
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         5400.99    5487.99    5574.99    5661.99    5748.99    5835.99    5922.99
+      Week 5
+         Weekly Total  : 43896.93
+         Daily Average : 6270.99
+         Sun        Mon        Tue        Wed        Thu        Fri        Sat
+         6009.99    6096.99    6183.99    6270.99    6357.99    6444.99    6531.99

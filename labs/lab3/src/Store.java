@@ -3,7 +3,7 @@ import java.util.Arrays;
 class Store {
 	final String name;
 
-	/** Gonna get a nice NPE if you try to go above 35 days */
+	/** Gonna get a nice out of bounds if you try to go above 35 days */
 	final WeeklySales[] weeklySales = {
 		new WeeklySales(1),
 		new WeeklySales(2),

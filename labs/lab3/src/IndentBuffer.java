@@ -4,13 +4,18 @@ import java.util.List;
 import java.util.function.Consumer;
 
 class IndentBuffer {
+	public static final String INDENT = "   ";
+	private static final int DEFAULT_LIST_SIZE = 50;
+
 	private final List<String> lines;
+
+	IndentBuffer() {
+		this(new ArrayList<>(DEFAULT_LIST_SIZE));
+	}
 
 	IndentBuffer(final List<String> list) {
 		this.lines = list;
 	}
-
-	public static final String INDENT = "   ";
 
 	private String indent = "";
 
@@ -41,21 +46,23 @@ class IndentBuffer {
 		this.lines.forEach(fn);
 	}
 
-	List<String> list() {
+	String[] asArray() {
+		return this.lines.toArray(new String[this.lines.size()]);
+	}
+
+	List<String> asList() {
 		return Collections.unmodifiableList(this.lines);
+	}
+
+	void dumpStdout() {
+		this.lines.forEach(System.out::println);
+	}
+
+	void dumpStderr() {
+		this.lines.forEach(System.err::println);
 	}
 
 	void clear() {
 		this.lines.clear();
-	}
-
-	static void ephermeralForeach(final Consumer<IndentBuffer> ibfn, final Consumer<String> sfn) {
-		var eph_ib = new IndentBuffer(new ArrayList<>(50));
-		ibfn.accept(eph_ib);
-		eph_ib.forEach(sfn);
-	}
-
-	static void stdoutBuffer(final Consumer<IndentBuffer> ibfn) {
-		ephermeralForeach(ibfn, System.out::println);
 	}
 }
