@@ -6,6 +6,14 @@
 
 # Learnings
 
+I already took an intro to Java class at d.tech before where I learned and
+taught myself most of Java. However, looks like I didn't learn *everything* that
+there was to learn about the language. Heck, I still don't understand the point
+of `? extends` and `? super` or even the `?` in the first place. I've read a
+little about it on stackoverflow but never quite got it. And I'm rambling again.
+Basically, I'm going to record the things that I've learned in this class. Most,
+if not all of the things listed below weren't taught in the class.
+
 ```java
 // turbofish in Java
 Instance.<Type>Method();
@@ -33,6 +41,37 @@ interface Defended {
 int ary[];
 
 int ary()[] {};
+
+// while talking with Joshua
+// https://stackoverflow.com/questions/44310226
+// https://discord.com/channels/206602548210040832/482633314155626497/772713396415496192
+
+stream.toArray(String[]::new);
+// is the same thing as
+stream.toArray(size -> new String[size]);
+// looks like it has a constructor of it's own or something
+
+String multiline = (
+	"""
+	Yes!
+	Finally multiline Strings in Java!
+	"""
+);
+
+// String::indent mentioned in the JEP for multiline strings
+// added in Java 11 and I just missed it or something
+
+var multiline_indented = multiline.indent(3);
+
+// Java 14 has switch expressions yes yees ye s!
+
+final int a = 1;
+String life_feeling = switch(a) {
+	case 1 -> "pain";
+	default -> {
+		yield "also pain";
+	}
+}
 ```
 
 ### Classpaths
@@ -80,7 +119,18 @@ Including the `.project` file, there also should be a `.classpath` file.
 
 For the `classpathentries`, see:
 
-https://github.com/eclipse/eclipse.jdt.core/blob/553e15826cc46c11229f17fd6da0fa43ed0055a9/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClasspathEntry.java#L1501-L1518
+[eclipse.jdt.internal.core.ClasspathEntry](https://github.com/eclipse/eclipse.jdt.core/blob/553e15826cc46c11229f17fd6da0fa43ed0055a9/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClasspathEntry.java#L1501-L1518
+)
+
+### JUnit4
+
+It's a pain to set up manually but it works, I suppose.
+
+I didn't *really* learn it but I learned how to set it up which for me, is like
+half of the learning. Getting JUnit4 set up meant that I had to read about the
+`ClassPathEntry`s and about annotations. Even though I didn't learn a whole lot
+about the library itself, it was totally worth trying it out just because of the
+cascading learning effect.
 
 #### Invisible/Implicit Projects
 
@@ -91,7 +141,15 @@ workspace. They can hold shadow files like the `.project` and `.classpath`.
 
 Learned about the basics of how Gradle works and even set up a small project.
 
+### Kotlin
 
-### JUnit
-
-It's a pain to set up manually but it works, I suppose.
+```kotlin
+// companion objects and static methods
+class Static {
+	companion object {
+		fun method(): Unit {
+			println("I'm \"static\"!")
+		}
+	}
+}
+```
