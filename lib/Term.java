@@ -1,5 +1,3 @@
-package Gannon.FHDA.CIS35A;
-
 import static java.lang.System.*;
 import java.util.Scanner;
 
@@ -13,9 +11,9 @@ public class Term {
 	}
 
 	private static void clearConhost() {
-		Flow.unchecked(() -> {
+		try {
 			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-		});
+		} catch (Throwable t) {}
 	}
 
 	private static void clearVT100() {
@@ -24,7 +22,7 @@ public class Term {
 	}
 
 	private static Scanner sc = new Scanner(System.in);
-	public static String prompt(String s) {
+	public static String prompt(final String s) {
 		out.print(s + "\n> ");
 		return sc.nextLine();
 	}

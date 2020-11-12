@@ -8,16 +8,25 @@ class SavingsAccount {
 		return annualInterestRate / 12;
 	}
 
-	private String name = "SavingsAccount";
-	private double savingsBalance;
+	/**
+	 * The spec is conflicting.
+	 * I am unable to do part 2 without making this a protected variable.
+	 */
+	protected double savingsBalance;
+	protected String name = "SavingsAccount";
 
-	SavingsAccount(String nam, double bal) {
-		name = nam;
+	SavingsAccount(final double bal) {
+		if (bal < 0) {
+			throw new RuntimeException(
+				"The initial balance of a savings account should not be less than zero!"
+			);
+		}
 		savingsBalance = bal;
 	}
 
-	SavingsAccount(double bal) {
-		savingsBalance = bal;
+	SavingsAccount(final String nam, final double bal) {
+		this(bal);
+		name = nam;
 	}
 
 	/**
@@ -32,15 +41,15 @@ class SavingsAccount {
 		savingsBalance *= (1 + getMonthlyInterest());
 	}
 
-	String balAsFixedPrec2() {
-		return String.format("%.2f", savingsBalance);
+	static String fmt(double d) {
+		return String.format("%.2f", d);
 	}
 
 	@Override
 	public String toString() {
 		return (""
 			+ name + " {\n"
-			+ "   savingsBalance = " + balAsFixedPrec2() + ";\n"
+			+ "   savingsBalance = " + fmt(savingsBalance) + ";\n"
 			+ "}\n"
 		);
 	}

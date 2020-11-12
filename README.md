@@ -153,3 +153,5 @@ class Static {
 	}
 }
 ```
+
+And also that I don't wanna use it without a proper IDE.
