@@ -21,6 +21,7 @@ class SpecialSavings extends SavingsAccount {
 		savingsBalance -= amt;
 	}
 
+	// private with a getter since I don't want anyone from outside touching it
 	private double interestEarned;
 
 	double getInterestEarned() {
@@ -29,13 +30,15 @@ class SpecialSavings extends SavingsAccount {
 
 	@Override
 	void calculateMonthlyInterest() {
-		double annualInterest = (
+		// that special clause where if the balance is above 10k,
+		// the annual interest goes to 10% instead of %4
+		final double annualInterest = (
 			super.savingsBalance > 10000
 			? 0.1
 			: 0.04
 		);
 
-		var currentInterest = savingsBalance * (annualInterest / 12);
+		final var currentInterest = savingsBalance * (annualInterest / 12);
 
 		interestEarned += currentInterest;
 		savingsBalance += currentInterest;

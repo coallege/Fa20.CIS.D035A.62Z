@@ -1,0 +1,27 @@
+Initial:
+Special saver1 {
+   savingsBalance = 2000.00;
+   interestEarned = 0.00;
+}
+Special saver2 {
+   savingsBalance = 3000.00;
+   interestEarned = 0.00;
+}
+Month 1:
+Special saver1 {
+   savingsBalance = 13108.33;
+   interestEarned = 108.33;
+}
+Special saver2 {
+   savingsBalance = 3010.00;
+   interestEarned = 10.00;
+}
+Month 2:
+Special saver1 {
+   savingsBalance = 2115.36;
+   interestEarned = 115.36;
+}
+Special saver2 {
+   savingsBalance = 10093.42;
+   interestEarned = 93.42;
+}

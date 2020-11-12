@@ -1,7 +1,7 @@
 public class SpecialSavingsDriver {
 	public static void main(String[] args) {
-		var saver1 = new SpecialSavings("Special saver1", 2000.00);
-		var saver2 = new SpecialSavings("Special saver2", 3000.00);
+		final var saver1 = new SpecialSavings("Special saver1", 2000.00);
+		final var saver2 = new SpecialSavings("Special saver2", 3000.00);
 
 		System.out.println("Initial:");
 		System.out.print(saver1 + "" + saver2);

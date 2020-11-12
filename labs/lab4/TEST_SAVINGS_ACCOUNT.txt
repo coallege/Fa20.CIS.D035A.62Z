@@ -1,0 +1,21 @@
+Initial:
+saver1 {
+   savingsBalance = 2000.00;
+}
+saver2 {
+   savingsBalance = 3000.00;
+}
+Month 1:
+saver1 {
+   savingsBalance = 2006.67;
+}
+saver2 {
+   savingsBalance = 3010.00;
+}
+Month 2:
+saver1 {
+   savingsBalance = 2015.03;
+}
+saver2 {
+   savingsBalance = 3022.54;
+}

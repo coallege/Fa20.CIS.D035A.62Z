@@ -25,7 +25,7 @@ class SavingsAccount {
 	}
 
 	SavingsAccount(final String nam, final double bal) {
-		this(bal);
+		this(bal); // call constructor because of error checking
 		name = nam;
 	}
 
@@ -41,7 +41,7 @@ class SavingsAccount {
 		savingsBalance *= (1 + getMonthlyInterest());
 	}
 
-	static String fmt(double d) {
+	static String fmt(final double d) {
 		return String.format("%.2f", d);
 	}
 
