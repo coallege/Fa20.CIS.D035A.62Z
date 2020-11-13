@@ -1,0 +1,94 @@
+digraph UML {
+   node [
+      fontname="Bitstream Vera Sans"
+      fontsize=14
+      shape=record
+   ]
+
+   "CargoShip" [
+      label="{
+         CargoShip
+         |
+         +type(): String\l
+         +whatsOnBoard(): String\l
+         +sail(): void\l
+      }"
+   ]
+
+   "CruiseShip" [
+      label="{
+         CruiseShip
+         |
+         +type(): String\l
+         +whatsOnBoard(): String\l
+         +sail(): void\l
+      }"
+   ]
+
+   "SavingsAccount" [
+      label="{
+         SavingsAccount
+         |
+         ~static annualInterestRate: double\l
+         #savingsBalance: double\l
+         #name: String\l
+         |
+         +toString(): String\l
+         ~static fmt(d: double): String\l
+         ~calculateMonthlyInterest(): void\l
+         ~static getMonthlyInterest(): double\l
+         ~static modifyInterestRate(rate: double): void\l
+      }"
+   ]
+
+   "SavingsAccountDriver" [
+      label="{
+         SavingsAccountDriver
+         |
+         +static main(args: String[]): void\l
+      }"
+   ]
+
+   "Ship" [
+      label="{
+         Ship
+         |
+         +type(): String\l
+         +whatsOnBoard(): String\l
+         +sail(): void\l
+      }"
+   ]
+
+   "ShipDriver" [
+      label="{
+         ShipDriver
+         |
+         +static main(args: String[]): void\l
+      }"
+   ]
+
+   "SpecialSavings" [
+      label="{
+         SpecialSavings
+         |
+         -interestEarned: double\l
+         |
+         +toString(): String\l
+         ~calculateMonthlyInterest(): void\l
+         ~getInterestEarned(): double\l
+         ~withdraw(amt: double): void\l
+         ~deposit(amt: double): void\l
+      }"
+   ]
+
+   "SpecialSavingsDriver" [
+      label="{
+         SpecialSavingsDriver
+         |
+         +static main(args: String[]): void\l
+      }"
+   ]
+   "Ship" -> "CargoShip"
+   "Ship" -> "CruiseShip"
+   "SavingsAccount" -> "SpecialSavings"
+}
