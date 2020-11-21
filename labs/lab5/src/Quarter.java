@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import static java.util.Arrays.stream;
 
 class Quarter {
 	final int quarterNumber;
@@ -10,9 +10,10 @@ class Quarter {
 	Quarter(final int quarterNumber, final int[] scores) {
 		this.quarterNumber = quarterNumber;
 
-		this.low  = Arrays.stream(scores).min().orElse(0);
-		this.avg  = (float) Arrays.stream(scores).average().orElse(0);
-		this.high = Arrays.stream(scores).max().orElse(0);
+		// leave the heavylifting to the IntStream API
+		this.low  = stream(scores).min().orElse(0);
+		this.avg  = (float) stream(scores).average().orElse(0);
+		this.high = stream(scores).max().orElse(0);
 	}
 
 	@Override

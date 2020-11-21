@@ -7,15 +7,18 @@ class Student {
 	private final int scores[] = new int[5];
 
 	Student(final String line) {
-		final var ary = (
+		final var tokens = (
 			Arrays
 				.stream(line.split(" "))
-				.mapToInt(Integer::parseInt)
+				.mapToInt(Integer::parseInt) // this can fail but it shouldn't
 				.toArray()
 		);
-		this.SID = ary[0];
+
+		this.SID = tokens[0];
+
 		for (var i = 0; i < 5; ++i) {
-			this.setScore(i, ary[i + 1]);
+			// i + 1 is because the first token is always the student id
+			this.setScore(i, tokens[i + 1]);
 		}
 	}
 
@@ -27,12 +30,21 @@ class Student {
 		return this.SID;
 	}
 
-	static ToIntFunction<Student> _getScore(final int quarter) {
-		return s -> s.getScore(quarter);
-	}
-
+	/**
+	 * getScore :: Student s => s ~> int -> int
+	 */
 	int getScore(final int quarter) {
 		return this.scores[quarter];
+	}
+
+	/**
+	 * _getScore :: Student s => int -> s -> int
+	 *
+	 * Comparing the signature to getScore, I have parameterized the Student and
+	 * flipped the args for a "data-last" kinda function.
+	 */
+	static ToIntFunction<Student> _getScore(final int quarter) {
+		return s -> s.getScore(quarter);
 	}
 
 	@Override

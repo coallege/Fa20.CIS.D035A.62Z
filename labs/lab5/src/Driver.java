@@ -15,29 +15,27 @@ public interface Driver {
 
 		final var students = (
 			lines
-				.skip(2)
-				.filter(new TFlipFlopPredicate<String>())
+				.skip(2) // skip the first two lines because they don't have data
+				.filter(new TFlipFlopPredicate())
 				.map(Student::new)
 				.collect(Collectors.toUnmodifiableList())
 		);
 		lines.close();
 
-		students.forEach(System.out::println);
-
-		final var quarters = new Quarter[5];
-
-		for (var qnum = 0; qnum < 5; ++qnum) {
+		for (var quarterNum = 0; quarterNum < 5; ++quarterNum) {
+			// iterate over each of the students getting the
+			// corresponding quarter scores for each of them
 			final var scores = (
 				students
 					.stream()
-					.mapToInt(Student._getScore(qnum))
+					.mapToInt(Student._getScore(quarterNum))
 					.toArray()
 			);
 
-			quarters[qnum] = new Quarter(qnum + 1, scores);
-		}
+			// typically, one would assign this to a Quarter[5] but
+			// the instructions just say to print it out
+			final var quarter = new Quarter(quarterNum + 1, scores);
 
-		for (final var quarter : quarters) {
 			System.out.println(quarter);
 		}
 	}

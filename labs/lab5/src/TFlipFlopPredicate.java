@@ -1,10 +1,10 @@
 import java.util.function.Predicate;
 
-class TFlipFlopPredicate<dummy_t> implements Predicate<dummy_t> {
+class TFlipFlopPredicate implements Predicate<Object> {
 	private boolean on;
 
 	@Override
-	public boolean test(final dummy_t dummy) {
+	public boolean test(final Object dummy) {
 		return this.on ^= true;
 	}
 }
