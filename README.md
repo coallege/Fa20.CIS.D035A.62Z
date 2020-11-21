@@ -4,7 +4,10 @@
 
 ![](resources/scrange.png)
 
-# Learnings
+The instructions for each lab are pretty much untouched except for some basic
+formatting to make it barely readable.
+
+## Learnings
 
 I already took an intro to Java class at d.tech before where I learned and
 taught myself most of Java. However, looks like I didn't learn *everything* that
@@ -55,6 +58,7 @@ String multiline = (
 	"""
 	Yes!
 	Finally multiline Strings in Java!
+	Well, only in Java 15 so I'll have to wait a bit longer.
 	"""
 );
 
@@ -71,6 +75,12 @@ String life_feeling = switch(a) {
 	default -> {
 		yield "also pain";
 	}
+}
+
+public interface IMain {
+   public static void main(final String[] args) {
+      System.out.println("Hello, World!");
+   }
 }
 ```
 
@@ -122,6 +132,11 @@ For the `classpathentries`, see:
 [eclipse.jdt.internal.core.ClasspathEntry](https://github.com/eclipse/eclipse.jdt.core/blob/553e15826cc46c11229f17fd6da0fa43ed0055a9/org.eclipse.jdt.core/model/org/eclipse/jdt/internal/core/ClasspathEntry.java#L1501-L1518
 )
 
+#### Invisible/Implicit Projects
+
+So there exist "invisible" projects which are stored in the Java language server
+workspace. They can hold shadow files like the `.project` and `.classpath`.
+
 ### JUnit4
 
 It's a pain to set up manually but it works, I suppose.
@@ -131,11 +146,6 @@ half of the learning. Getting JUnit4 set up meant that I had to read about the
 `ClassPathEntry`s and about annotations. Even though I didn't learn a whole lot
 about the library itself, it was totally worth trying it out just because of the
 cascading learning effect.
-
-#### Invisible/Implicit Projects
-
-So there exist "invisible" projects which are stored in the Java language server
-workspace. They can hold shadow files like the `.project` and `.classpath`.
 
 ### Gradle
 
