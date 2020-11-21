@@ -14,8 +14,8 @@ class Student {
 				.toArray()
 		);
 		this.SID = ary[0];
-		for (var i = 1; i < 5; ++i) {
-			this.setScore(i - 1, ary[i]);
+		for (var i = 0; i < 5; ++i) {
+			this.setScore(i, ary[i + 1]);
 		}
 	}
 
@@ -27,10 +27,32 @@ class Student {
 		return this.SID;
 	}
 
-	static ToIntFunction<Student> $getScore(final int quarter) {
+	static ToIntFunction<Student> _getScore(final int quarter) {
 		return s -> s.getScore(quarter);
 	}
+
 	int getScore(final int quarter) {
 		return this.scores[quarter];
+	}
+
+	@Override
+	public String toString() {
+		final var sb = new StringBuilder(64);
+		sb
+			.append("Student ")
+			.append(this.SID)
+			.append(" {\n");
+
+		for (var i = 0; i < 5; ++i) {
+			sb
+				.append("   Quarter ")
+				.append(i + 1)
+				.append(": ")
+				.append(this.getScore(i))
+				.append('\n');
+		}
+
+		sb.append("}\n");
+		return sb.toString();
 	}
 }

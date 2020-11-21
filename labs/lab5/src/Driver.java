@@ -22,14 +22,23 @@ public interface Driver {
 		);
 		lines.close();
 
+		students.forEach(System.out::println);
+
 		final var quarters = new Quarter[5];
 
-		for (var qnum = 0; qnum < quarters.length; ++qnum) {
-			quarters[qnum] = new Quarter(
+		for (var qnum = 0; qnum < 5; ++qnum) {
+			final var scores = (
 				students
 					.stream()
-					.mapToInt(Student.$getScore(qnum))
+					.mapToInt(Student._getScore(qnum))
+					.toArray()
 			);
+
+			quarters[qnum] = new Quarter(qnum + 1, scores);
+		}
+
+		for (final var quarter : quarters) {
+			System.out.println(quarter);
 		}
 	}
 }
