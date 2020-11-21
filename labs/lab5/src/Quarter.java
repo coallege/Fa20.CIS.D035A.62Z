@@ -30,7 +30,7 @@ class Quarter {
 				.append(String.format("%.2f", this.avg))
 				.append("\n   high: ")
 				.append(this.high)
-				.append("\n}\n")
+				.append("\n}")
 				.toString()
 		);
 	}

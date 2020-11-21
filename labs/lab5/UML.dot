@@ -1,0 +1,85 @@
+digraph UML {
+   node [
+      fontname="Bitstream Vera Sans"
+      fontsize=14
+      shape=record
+   ]
+
+   "Predicate" [
+      label="{Predicate}"
+   ]
+
+   "Driver" [
+      label="{
+         Driver
+         |
+         +static main(args: String[]): void\l
+      }"
+   ]
+
+   "InputFile" [
+      label="{
+         InputFile
+         |
+         -static final magic: String\l
+         ~final file: Optional\l
+         |
+         -static searchFor(): Optional\l
+         -static isMagic(file: Path): boolean\l
+      }"
+   ]
+
+   "Quarter" [
+      label="{
+         Quarter
+         |
+         ~final quarterNumber: int\l
+         ~final low: int\l
+         ~final avg: float\l
+         ~final high: int\l
+         |
+         +toString(): String\l
+      }"
+   ]
+
+   "Student" [
+      label="{
+         Student
+         |
+         -final SID: int\l
+         -final scores: int[]\l
+         |
+         +toString(): String\l
+         ~static _getScore(quarter: int): ToIntFunction\l
+         ~getSID(): int\l
+         ~setScore(quarter: int, score: int): void\l
+         ~getScore(quarter: int): int\l
+      }"
+   ]
+
+   "TFlipFlopPredicate" [
+      label="{
+         TFlipFlopPredicate
+         |
+         -on: boolean\l
+         |
+         +test(dummy: Object): boolean\l
+      }"
+   ]
+
+   "util" [
+      label="{
+         util
+         |
+         -static final sc: Scanner\l
+         |
+         ~static basename(s: String): String\l
+         ~static cancel(path: Path): boolean\l
+         ~static realpath(path: Path): Path\l
+         ~static wslpath(path: Path): String\l
+         ~static dedupe_right(ary: Object[], eq: BiPredicate): List\l
+         ~static dedupe_right(ary: Object[]): List\l
+      }"
+   ]
+   "Predicate" -> "TFlipFlopPredicate"
+}

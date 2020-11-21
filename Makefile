@@ -24,5 +24,10 @@ run~%: $(artifacts)
 clean:
 	-rd /s /q "$(OUT_DIR)"
 
-.PHONY: default build-all run~% noop~%
+umlj = $(CURDIR)/../uml-jenerate-v0.0.2.jar
+
+uml:
+	java -jar $(umlj) $(CURDIR) $(CURDIR)/UML.dot $(CURDIR)/UML.png
+
+.PHONY: default run~% clean
 .SECONDARY:

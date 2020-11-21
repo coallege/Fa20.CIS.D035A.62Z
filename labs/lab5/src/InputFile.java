@@ -20,6 +20,10 @@ class InputFile {
 		}
 	}
 
+	/**
+	 * In the parent directory of this process, get the
+	 * first regular file that starts with `InputFile.magic`.
+	 */
 	private static Optional<Path> searchFor() {
 		try (final var files = Files.walk(Paths.get(".."))) {
 			return (

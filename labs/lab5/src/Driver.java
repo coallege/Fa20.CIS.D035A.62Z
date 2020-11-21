@@ -43,7 +43,7 @@ public interface Driver {
 				// typically, one would assign this to a Quarter[5] but
 				// the instructions just say to print it out
 				out.println(
-				new Quarter(quarterNum + 1, scores)
+					new Quarter(quarterNum + 1, scores)
 				);
 			}
 		} catch (IOException e) {
