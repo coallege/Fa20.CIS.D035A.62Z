@@ -1,7 +1,8 @@
 IN_DIR ?= src
 OUT_DIR ?= bin
 
-src_files = $(wildcard $(IN_DIR)/*.java)
+rwildcard = $(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
+src_files = $(call rwildcard,$(IN_DIR),*.java)
 src_names = $(src_files:$(IN_DIR)/%.java=%)
 artifacts = $(src_names:%=$(OUT_DIR)/%.class)
 
@@ -9,7 +10,7 @@ JAVAC_ARGS = -cp "$(IN_DIR);$(LIBS)" -d $(OUT_DIR) -parameters
 JAVA_ARGS  = -cp "$(OUT_DIR);$(LIBS)"
 
 default:
-	@echo Please choose a target
+	@echo src_files $(src_files)
 
 $(OUT_DIR)/%.class: $(IN_DIR)/%.java
 	@echo ----- MAK $< -----
@@ -24,7 +25,9 @@ run~%: $(artifacts)
 clean:
 	-rd /s /q "$(OUT_DIR)"
 
-umlj = $(CURDIR)/../uml-jenerate-v0.0.2.jar
+THIS_DIR := $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
+
+umlj = $(THIS_DIR)/resources/uml-jenerate-v0.0.2.jar
 
 uml:
 	java -jar $(umlj) $(CURDIR) $(CURDIR)/UML.dot $(CURDIR)/UML.png
