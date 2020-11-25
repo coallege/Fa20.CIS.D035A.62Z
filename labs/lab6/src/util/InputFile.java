@@ -26,10 +26,6 @@ public class InputFile {
 		}
 	}
 
-	public static boolean isMagic(final File file) {
-		return InputFile.isMagic(file.toPath());
-	}
-
 	/**
 	 * In the grandparent directory of this process, get the
 	 * first regular file that starts with `InputFile.magic`.

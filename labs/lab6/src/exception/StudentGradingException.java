@@ -4,7 +4,7 @@ import java.io.*;
 import functional.*;
 
 @SuppressWarnings("serial")
-public class StudentGradingException extends RuntimeException {
+public class StudentGradingException extends Exception {
 	public static boolean setOutput(final File f) {
 		final OutputStream fos;
 		try {
@@ -21,7 +21,7 @@ public class StudentGradingException extends RuntimeException {
 		System.setErr(new PrintStream(os));
 	}
 
-	public static void fwd(final ThrowingRunnable fn) {
+	public static void fwd(final ThrowingRunnable fn) throws StudentGradingException {
 		try {
 			fn.run();
 		} catch (Throwable t) {

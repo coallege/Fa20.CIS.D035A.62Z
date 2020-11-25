@@ -7,7 +7,7 @@ import impl.*;
 import util.FileIO;
 
 interface Driver2 {
-	static void main(final String[] args) {
+	static void main(final String[] args) throws StudentGradingException {
 		final var student = new Student(0);
 		student.setScore(0, 97);
 		student.setScore(1, 84);
