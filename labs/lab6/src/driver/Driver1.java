@@ -17,17 +17,13 @@ interface Driver1 {
 			System.err.println("Logging and Fixing");
 		}
 
+		// "Logs exceptions in a text file."
 		final var errFile = new File("driver.Driver1.err.txt");
-		final OutputStream fos;
-		try {
-			errFile.createNewFile();
-			fos = new FileOutputStream(errFile);
-		} catch (Throwable e) {
+		final var err = StudentGradingException.setOutput(errFile);
+		if (err) {
 			return;
 		}
 
-		// "Logs exceptions in a text file."
-		StudentGradingException.setOutput(fos);
 		throw new StudentGradingException("I'm in a file!");
 	}
 }

@@ -2,14 +2,16 @@ package impl;
 
 import adapter.*;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public final class Student implements IStudent {
-	private final int id;
+@SuppressWarnings("serial")
+public final class Student implements IStudent, Serializable {
+	final int id;
 
-	private final int scores[] = new int[5];
+	final int scores[] = new int[5];
 
-	Student(final String line) {
+	public Student(final String line) {
 		final var tokens = (
 			Arrays
 				.stream(line.split(" "))
@@ -25,15 +27,15 @@ public final class Student implements IStudent {
 		}
 	}
 
-	Student(final int id) {
+	public Student(final int id) {
 		this.id = id;
 	}
 
-	int getScore(final int quarter) {
+	public int getScore(final int quarter) {
 		return this.scores[quarter];
 	}
 
-	void setScore(final int quarter, final int score) {
+	public void setScore(final int quarter, final int score) {
 		this.scores[quarter] = score;
 	}
 

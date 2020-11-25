@@ -5,6 +5,18 @@ import functional.*;
 
 @SuppressWarnings("serial")
 public class StudentGradingException extends RuntimeException {
+	public static boolean setOutput(final File f) {
+		final OutputStream fos;
+		try {
+			f.createNewFile();
+			fos = new FileOutputStream(f);
+		} catch (Throwable t) {
+			return false;
+		}
+		StudentGradingException.setOutput(fos);
+		return true;
+	}
+
 	public static void setOutput(final OutputStream os) {
 		System.setErr(new PrintStream(os));
 	}
