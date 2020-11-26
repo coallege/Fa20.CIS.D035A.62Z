@@ -3,6 +3,7 @@ package driver;
 import impl.*;
 import adapter.*;
 import exception.*;
+import constants.output_files;
 
 import java.io.*;
 import java.util.*;
@@ -24,7 +25,7 @@ interface Driver3 {
 		@SuppressWarnings("unchecked")
 		final Set<Integer> student_ids = API.getStudentIds();
 
-		try (final var fos = new FileOutputStream("driver.Driver3.students.ser")) {
+		try (final var fos = new FileOutputStream(output_files.Driver3)) {
 			API.setSerialStream(fos);
 			for (final var id : student_ids) {
 				API.serializeStreamStudent(id);

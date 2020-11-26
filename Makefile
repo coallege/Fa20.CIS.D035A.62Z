@@ -10,7 +10,7 @@ JAVAC_ARGS = -cp "$(IN_DIR);$(LIBS)" -d $(OUT_DIR) -parameters
 JAVA_ARGS  = -cp "$(OUT_DIR);$(LIBS)"
 
 default:
-	@echo src_files $(src_files)
+	@echo $(MAKEFILE_LIST)
 
 $(OUT_DIR)/%.class: $(IN_DIR)/%.java
 	@echo ----- MAK $< -----
@@ -25,9 +25,8 @@ run~%: $(artifacts)
 clean:
 	-rd /s /q "$(OUT_DIR)"
 
-THIS_DIR := $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
-
-umlj = $(THIS_DIR)/resources/uml-jenerate-v0.0.2.jar
+SELF_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
+umlj = $(SELF_DIR)/resources/uml-jenerate-v0.0.3.jar
 
 uml:
 	java -jar $(umlj) $(CURDIR) $(CURDIR)/UML.dot $(CURDIR)/UML.png

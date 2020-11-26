@@ -11,10 +11,10 @@ public class StudentGradingException extends Exception {
 			f.createNewFile();
 			fos = new FileOutputStream(f);
 		} catch (Throwable t) {
-			return false;
+			return true;
 		}
 		StudentGradingException.setOutput(fos);
-		return true;
+		return false;
 	}
 
 	public static void setOutput(final OutputStream os) {

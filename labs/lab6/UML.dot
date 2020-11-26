@@ -1,0 +1,135 @@
+digraph UML {
+   node [
+      fontname="Bitstream Vera Sans"
+      fontsize=14
+      shape=record
+   ]
+
+   "Exception" [
+      label="{Exception}"
+   ]
+
+   "Predicate" [
+      label="{Predicate}"
+   ]
+
+   "Serializable" [
+      label="{Serializable}"
+   ]
+
+   "adapter.IStatistics" [
+      label="{
+         adapter.IStatistics
+         |
+         +abstract high(): int\l
+         +abstract low(): int\l
+         +abstract avg(): float\l
+      }"
+   ]
+
+   "adapter.IStudent" [
+      label="{
+         adapter.IStudent
+      }"
+   ]
+
+   "adapter.IStudentAPI" [
+      label="{
+         adapter.IStudentAPI
+      }"
+   ]
+
+   "driver.Driver2" [
+      label="{
+         driver.Driver2
+      }"
+   ]
+
+   "driver.Driver3" [
+      label="{
+         driver.Driver3
+      }"
+   ]
+
+   "exception.StudentGradingException" [
+      label="{
+         exception.StudentGradingException
+      }"
+   ]
+
+   "functional.TFlipFlopPredicate" [
+      label="{
+         functional.TFlipFlopPredicate
+         |
+         -on: boolean\l
+         |
+         +test(dummy: Object): boolean\l
+      }"
+   ]
+
+   "functional.ThrowingRunnable" [
+      label="{
+         functional.ThrowingRunnable
+         |
+         +abstract run(): void\l
+      }"
+   ]
+
+   "impl.Statistics" [
+      label="{
+         impl.Statistics
+         |
+         ~final low: int\l
+         ~final avg: float\l
+         ~final high: int\l
+         |
+         +high(): int\l
+         +low(): int\l
+         +avg(): float\l
+      }"
+   ]
+
+   "impl.Student" [
+      label="{
+         impl.Student
+      }"
+   ]
+
+   "impl.StudentAPI" [
+      label="{
+         impl.StudentAPI
+      }"
+   ]
+
+   "impl.StudentGrade" [
+      label="{
+         impl.StudentGrade
+      }"
+   ]
+
+   "util.FileIO" [
+      label="{
+         util.FileIO
+      }"
+   ]
+
+   "util.InputFile" [
+      label="{
+         util.InputFile
+         |
+         -static final magic: String\l
+         |
+         +static isMagic(file: Path): boolean\l
+         +static isMagic(s: String): boolean\l
+         +static searchFor(): Path\l
+      }"
+   ]
+   "Exception" -> "exception.StudentGradingException"
+   "Predicate" -> "functional.TFlipFlopPredicate"
+   "adapter.IStatistics" -> "impl.Statistics"
+   "Serializable" -> "impl.Statistics"
+   "adapter.IStudent" -> "impl.Student"
+   "Serializable" -> "impl.Student"
+   "adapter.IStudentAPI" -> "impl.StudentAPI"
+   "Serializable" -> "impl.StudentGrade"
+}

@@ -1,6 +1,7 @@
 package driver;
 
 import exception.*;
+import constants.output_files;
 
 import java.io.*;
 
@@ -10,7 +11,7 @@ fixing the exception. Put this in a separate driver called Driver1. java.
 (Put this in driver package)
 */
 interface Driver1 {
-	static void main(final String[] args) {
+	static void main(final String[] args) throws StudentGradingException {
 		try {
 			throw new StudentGradingException("Throwing");
 		} catch (StudentGradingException e) {
@@ -18,7 +19,7 @@ interface Driver1 {
 		}
 
 		// "Logs exceptions in a text file."
-		final var errFile = new File("driver.Driver1.err.txt");
+		final var errFile = new File(output_files.Driver1);
 		final var err = StudentGradingException.setOutput(errFile);
 		if (err) {
 			return;

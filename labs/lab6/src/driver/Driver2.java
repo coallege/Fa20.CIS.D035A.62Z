@@ -1,10 +1,11 @@
 package driver;
 
-import java.io.FileOutputStream;
-
-import exception.StudentGradingException;
 import impl.*;
-import util.FileIO;
+import exception.*;
+import constants.output_files;
+
+import util.*;
+import java.io.*;
 
 interface Driver2 {
 	static void main(final String[] args) throws StudentGradingException {
@@ -20,7 +21,7 @@ interface Driver2 {
 		final var sg = new StudentGrade(student, stats);
 
 		StudentGradingException.fwd(() -> {
-			final var fos = new FileOutputStream("driver.Driver2.student_grade.ser");
+			final var fos = new FileOutputStream(output_files.Driver2);
 			FileIO.writeOut(sg, fos);
 			fos.close();
 		});
