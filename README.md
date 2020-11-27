@@ -6,6 +6,8 @@
 
 The instructions for each lab are pretty much untouched except for some basic
 formatting to make it barely readable.
+I had to include them just so that everyone can partake in the suffering that is
+trying to understand them.
 
 ## Learnings
 

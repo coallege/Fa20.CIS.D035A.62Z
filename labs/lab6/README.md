@@ -1,5 +1,12 @@
 # Submission
 
+[Instructions](instructions.md)
+
+Are those instructions indecipherable?
+Yes, yes they are.
+
+[Better Instructions](better-instructions.md)
+
 ## Requirement fulfillment:
 
 Each requirement is fulfilled in it's respective driver, as specified.
