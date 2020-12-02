@@ -1,6 +1,6 @@
 /resources/packed/
-.class
-.exe
+*.class
+*.exe
+.gradle/
 bin/
 build/
-.gradle/

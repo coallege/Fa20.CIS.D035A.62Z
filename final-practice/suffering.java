@@ -167,23 +167,317 @@ public class CompleteConcept {
 class CompleteConcept {
 	public static void main(String[] args) {
 		String a = new String("Hello Universe!");
-		System.out.println(a.charAt(0)); //? 'H'
-		System.out.println(a.indexOf('e')); //? 1
-		System.out.println(a.indexOf("Uni")); //? -1
-		System.out.println(a.substring(6)); //> "Universe"
-		System.out.println(a.substring(6, 9)); //> "Uni"
-		System.out.println(a.equals("hello universe!")); //> false
-		System.out.println(a.equalsIgnoreCase("hello universe!")); //> true
-		System.out.println(a.startsWith("Hello")); //> true
-		System.out.println(a.startsWith("Uni", 6)); //> true
-		System.out.println(a.endsWith("e!")); //> true
-		System.out.println(a.contains("Uni")); //> true
-		System.out.println(a.replace('e', 'u')); //> "Hullo Univursu"
-		System.out.println(a.replace("ll", "lll")); //> "Helllo Universe"
+		System.out.println(a.charAt(0));
+		//? 'H'
+		//> 'H'
+		System.out.println(a.indexOf('e'));
+		//? 1
+		//> 1
+		System.out.println(a.indexOf("Uni"));
+		//? -1
+		//> 6
+		System.out.println(a.substring(6));
+		//? "Universe"
+		//> "Universe!"
+		System.out.println(a.substring(6, 9));
+		//? "Uni"
+		//> "Uni"
+		System.out.println(a.equals("hello universe!"));
+		//? false
+		//> false
+		System.out.println(a.equalsIgnoreCase("hello universe!"));
+		//? true
+		//> true
+		System.out.println(a.startsWith("Hello"));
+		//? true
+		//> true
+		System.out.println(a.startsWith("Uni", 6));
+		//? true
+		//> true
+		System.out.println(a.endsWith("e!"));
+		//? true
+		//> true
+		System.out.println(a.contains("Uni"));
+		//? true
+		//> true
+		System.out.println(a.replace('e', 'u'));
+		//? "Hullo Univursu"
+		//> "Hullo Univursu!"
+		System.out.println(a.replace("ll", "lll"));
+		//? "Helllo Universe"
+		//> "Helllo Universe!"
 		a = " A B C  \n  ";
-		System.out.println(a.trim()); //> "A B C"
-		System.out.println(a.toUpperCase()); //> "HELLO UNIVERSE!"
-		System.out.println(a.toLowerCase()); //> "hello universe!"
-		System.out.println(a.length()); //> 15
+		System.out.println(a.trim());
+		//? "A B C"
+		//> "A B C"
+		System.out.println(a.toUpperCase());
+		//? "HELLO UNIVERSE!"
+		//> " A B C  \n  "
+		System.out.println(a.toLowerCase());
+		//? "hello universe!"
+		//> " a b c  \n  "
+		System.out.println(a.length());
+		//? 15
+		//> 11
+	}
+}
+
+// oof, that did not go well. I could do with paying more attention to detail
+
+/* Question 4 (10 pts)
+Identify errors in the following program, correct them and write the output.
+class test {
+	public static void main(String[] args) {
+		byte a = 1000;
+		short b = a * 5;
+		long l = 5000;
+		float k = 834.63;
+		byte c = k;
+		double d = b;
+		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+	}
+}
+*/
+
+// well, the IDE sure makes this easy
+
+class test {
+	public static void main(String[] args) {
+		int a = 1000;
+		int b = a * 5;
+		double k = 834.63;
+		double c = k;
+		double d = b;
+		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+	}
+}
+
+// I tried to keep the spirit of the program, if not the datatypes
+// Output:
+// 5000
+// 834.63
+// 5000
+
+/* Question 5 (10 pts)
+File Encryption is the science of writing contents of a file in a secret code.
+Your encryption program should work like a filter,
+reading the content of one file, modifying the data into a code,
+and then writing the coded contents out to a second file.
+The second file will be a version of the first file, but written in secret code.
+Write a program to demonstrate the above working with binary files.
+*/
+
+// this is going to be suffering, I don't know how to write binary files
+
+interface EncodeDecode {
+	static byte[] xorWithFirst(final byte[] data) {
+		final var len = data.length;
+		if (data.length > 1) {
+			final var firstByte = data[0];
+			for (var i = 1; i < len; i++) {
+				data[i] ^= firstByte;
+			}
+		}
+		return data;
+	}
+
+	static boolean encodeDecode(final String in, final String out) {
+		try (
+			final var fin = new FileInputStream(in);
+			final var fout = new FileOutputStream(out);
+		) {
+			final var data = fin.readAllBytes();
+			fout.write(EncodeDecode.xorWithFirst(data));
+		} catch (Throwable e) {
+			return false;
+		}
+		return true;
+	}
+
+	static void main(final String[] args) {
+		if (args.length < 2) {
+			System.err.println("java EncodeDecode infile.txt outfile.txt");
+			return;
+		}
+
+		encodeDecode(args[0], args[1]);
+	}
+}
+
+/* Question 6a (5 pts)
+Generate the output of the following program:
+class Add {
+	protected int i;
+	Add(int a) {
+		i = a;
+	}
+	protected void addIt(int amount) {
+		i += amount;
+	}
+	protected int getIt() {
+		return i;
+	}
+}
+class DAdd extends Add {
+	private int i;
+	DAdd(int a, int b) {
+		super(a);
+		i = b;
+	}
+	protected void addIt(int amount) {
+		i = i * super.i + amount;
+	}
+	protected int getIt() {
+		return i + 1;
+	}
+	protected void doubleIt(int amount) {
+		addIt(2 * amount);
+	}
+}
+public class TestAdder {
+	public static void main(String args[]) {
+		Add A = new Add(3);
+		DAdd DA = new DAdd(1, 5);
+		A.addIt(2);
+		System.out.println(A.getIt());
+		A = DA;
+		A.addIt(2);
+		System.out.println(A.getIt());
+		DA.doubleIt(2);
+		System.out.println(A.getIt());
+	}
+}
+*/
+
+class Add {
+	protected int i;
+	Add(int a) {
+		i = a;
+	}
+	protected void addIt(int amount) {
+		i += amount;
+	}
+	protected int getIt() {
+		return i;
+	}
+}
+class DAdd extends Add {
+	private int i;
+	DAdd(int a, int b) {
+		super(a);
+		i = b;
+	}
+	protected void addIt(int amount) {
+		i = i * super.i + amount;
+	}
+	protected int getIt() {
+		return i + 1;
+	}
+	protected void doubleIt(int amount) {
+		addIt(2 * amount);
+	}
+}
+class TestAdder {
+	public static void main(String args[]) {
+		Add A = new Add(3);
+		DAdd DA = new DAdd(1, 5);
+		A.addIt(2);
+		System.out.println(A.getIt());
+		//? 5
+		//> 5
+		A = DA;
+		A.addIt(2);
+		System.out.println(A.getIt());
+		//? 8
+		//> 8
+		DA.doubleIt(2);
+		System.out.println(A.getIt());
+		//? 12
+		//> 12
+	}
+}
+
+/* Question 6b (5 pts)*/
+/* Question 6b1
+What is the difference between method overriding and method overloading?
+*/
+
+// Method overriding is when you completely replace the super class's method
+// Overloading, on the other hand, does not replace a method but just adds
+// another one.
+
+class MyClass {
+	// this replaces Object#toString
+	@Override
+	public String toString() { return ""; }
+
+	String sayHi() { return "hi"; }
+	// this is overloading
+	String sayHi(String name) { return "hi, " + name; }
+}
+
+// String sayHi() and String sayHi(String) are actually two different methods
+// that can coexist on the same class even though they share the same name.
+
+/* Question 6b2
+When working with Interfaces? //Discussed in class.
+*/
+
+// With interfaces, you must Override methods.
+// The interface defines methods that you must implement and override.
+// Method overloading doesn't always have to be used in interfaces unless the
+// interface defines overloaded methods.
+
+/* Question 7a (10 pts)- Extra Credit */
+
+/* Question 7a1.
+Of the two search algorithms we covered in this course,
+which of the two is the fastest? the slowest? and why for each?
+*/
+
+// guess it's time to break out that book that I haven't read
+// huh, I can't find which ones were "covered in the class"
+// some of these slides aren't actually half bad
+
+// found it
+// https://docs.google.com/presentation/d/e/
+// 2PACX-1vTbQ3MFK080kqR4Y5AnWX5-YaPhOvIU1s_sNqRfkfOCGz_x27-qgPH2_kCXcCTVy78jdiBZGymOJicI
+// /pub
+
+// seems like we might've covered this in the C++ class too
+// - insertion sort
+// - bubble sort
+// - selection sort
+
+// In the C++ class, we didn't cover insertion sort.
+
+// alright to answer the question
+// bubble sort is the slowest out of all of them for larger arrays
+// insertion sort might seem like the fastest but there's a large memory penalty
+// for it's swaps.
+// selection sort is probably the fastest for most arrays.
+
+interface BubbleSort {
+	/** Sorts an array in place */
+	static int[] sort(final int[] ary) {
+		var swapped = true;
+		int max = ary.length;
+		while (swapped && max --> 0) {
+			swapped = false;
+			for (int i = 0; i < max; ++i) {
+				int first = ary[i];
+				int second = ary[i + 1];
+				if (first > second) {
+					ary[i] = second;
+					ary[i + 1] = first;
+					swapped = true;
+				}
+			}
+		}
+		return ary;
 	}
 }

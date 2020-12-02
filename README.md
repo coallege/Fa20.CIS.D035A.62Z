@@ -84,6 +84,18 @@ public interface IMain {
       System.out.println("Hello, World!");
    }
 }
+
+// subclasses can be abstract even if super classes are concrete
+// come to think of it, this is pretty obvious but I didn't really know it.
+
+class Suuper {}
+abstract class Abstraact extends Suuper {};
+
+// all fields in an interface are public final abstract
+interface Constants {
+	int i = 0;
+}
+// huh, maybe some of these lectures or slide decks were useful after all.
 ```
 
 ### Classpaths
