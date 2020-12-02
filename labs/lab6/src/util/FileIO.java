@@ -18,6 +18,4 @@ public class FileIO {
 			throw new StudentGradingException(t);
 		}
 	}
-
-	
 }

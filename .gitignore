@@ -1,6 +1,6 @@
+/resources/packed/
 .class
 .exe
 bin/
 build/
 .gradle/
-.truth
